@@ -1,0 +1,13 @@
+# env & secrets
+.env
+.env.*
+
+# logs
+*.log
+
+# node
+node_modules/
+
+# builds
+dist/
+build/
