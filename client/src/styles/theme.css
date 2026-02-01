@@ -11,11 +11,13 @@
   box-sizing: border-box;
 }
 
-body {
+html,body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 a {
@@ -47,8 +49,7 @@ a {
 }
 
 .grid {
-  display: grid;
-  gap: 1rem;
+  width: 100%;
 }
 
 .grid-3 {
@@ -70,6 +71,8 @@ a {
   border-radius: 12px;
   padding: 1.25rem;
   background: white;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .badge {
@@ -163,8 +166,18 @@ a {
   font-size: 0.9rem;
   color: var(--muted);
 }
-.desktop-nav { display: none; }
+
+/* NAVIGATION */
+.desktop-nav {
+  display: none;
+}
+
 @media (min-width: 900px) {
-  .desktop-nav { display: flex; }
-  header button[aria-label="Menü öffnen"] { display: none; }
+  .desktop-nav {
+    display: flex;
+  }
+
+  header button[aria-label="Menü öffnen"] {
+    display: none;
+  }
 }
