@@ -181,3 +181,19 @@ a {
     display: none;
   }
 }
+
+@media (max-width: 600px) {
+  .container {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
