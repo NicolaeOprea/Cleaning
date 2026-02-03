@@ -1,33 +1,62 @@
 import { Link } from "react-router-dom";
+import DustCarousel from "../components/DustCarousel";
+import buro1 from "../assets/buro/buro-1.jpg";
+import garten1 from "../assets/garten/garten-1.jpg";
+import fenster1 from "../assets/fenster/fenster-1.jpg";
+import praxis1 from "../assets/praxis/praxis-1.jpg";
+import treppe1 from "../assets/treppe/treppe-1.jpg"
 
+
+const heroImages = [
+  buro1,
+  praxis1,
+  fenster1,
+  garten1,
+  treppe1,
+];
 export default function Home() {
   return (
     <main>
-      <section className="hero">
-        <div className="container">
-          <span className="badge">München + Umland • Umkreis ~40 km</span>
+     <section className="hero">
+  <div className="container hero-split">
+    {/* TEXT (mobile -> sus) */}
+    <div className="hero-copy">
+      <span className="badge">München + Umland • Umkreis ~40 km</span>
 
-          <h1>Gebäudereinigung & Hausmeisterservice in München</h1>
+      <h1>Gebäudereinigung & Hausmeisterservice in München</h1>
 
-          <p>
-            ABBAS bietet zuverlässige Reinigung für <b>Büros, Praxen</b> und Wohnanlagen –
-            diskret, gründlich und planbar. Fenster, Treppenhäuser und Außenbereiche inklusive.
-          </p>
+      <p>
+        ABBAS bietet zuverlässige Reinigung für <b>Büros, Praxen</b> und Wohnanlagen –
+        diskret, gründlich und planbar. Fenster, Treppenhäuser und Außenbereiche inklusive.
+      </p>
 
-          <div className="hero-cta">
-            <Link className="btn" to="/kontakt">Kostenloses Angebot anfordern</Link>
-            <a className="btn secondary" href="tel:+4917600000000">Jetzt anrufen</a>
-            <Link className="btn secondary" to="/praxis">Praxisreinigung ansehen</Link>
-          </div>
+      <div className="hero-cta">
+        <Link className="btn" to="/kontakt">Kostenloses Angebot</Link>
+        <a className="btn secondary" href="tel:+4917600000000">Anrufen</a>
+        <Link className="btn secondary" to="/praxis">Praxisreinigung</Link>
+      </div>
 
-          <div className="kpi">
-            <span>✅ Feste Pläne</span>
-            <span>✅ Diskret (Praxis)</span>
-            <span>✅ Persönlicher Service</span>
-            <span>✅ Flexible Zeiten</span>
-          </div>
-        </div>
-      </section>
+      <div className="kpi">
+        <span>✅ Feste Pläne</span>
+        <span>✅ Diskret (Praxis)</span>
+        <span>✅ Persönlicher Service</span>
+        <span>✅ Flexible Zeiten</span>
+      </div>
+    </div>
+
+    {/* CAROUSEL (desktop -> stânga, mobile -> jos) */}
+    <div className="hero-media">
+      <DustCarousel
+        images={heroImages}
+        height={340}
+        cols={26}
+        rows={14}
+        intervalMs={5200}
+      />
+    </div>
+  </div>
+</section>
+
 
       <section className="section">
         <div className="container">
@@ -37,18 +66,39 @@ export default function Home() {
           </p>
 
           <div className="grid grid-3" style={{ marginTop: "1.25rem" }}>
-            <div className="card">
-              <h3>Büroreinigung</h3>
-              <p className="small">Regelmäßige Unterhaltsreinigung – sauber, planbar, zuverlässig.</p>
-            </div>
-            <div className="card">
-              <h3>Praxisreinigung</h3>
+           <Link to="/buroreinigung" className="card card-media">
+  <div className="card-media-img">
+    <img src={buro1} alt="Büroreinigung" />
+  </div>
+
+  <div className="card-media-text">
+    <h3>Büroreinigung</h3>
+    <p className="small">Regelmäßige Unterhaltsreinigung – sauber, planbar, zuverlässig.</p>
+  </div>
+</Link>
+
+           
+            <Link to="/praxisreinigung" className="card card-media">
+  <div className="card-media-img">
+    <img src={praxis1} alt="Praxisreinigung" />
+  </div>
+
+  <div className="card-media-text">
+   <h3>Praxisreinigung</h3>
               <p className="small">Hygienebewusst, diskret, auf Wunsch mit Protokoll.</p>
-            </div>
-            <div className="card">
-              <h3>Fenster & Glas</h3>
+  </div>
+</Link>
+           
+            <Link to="/fenster" className="card card-media">
+  <div className="card-media-img">
+    <img src={fenster1} alt="Büroreinigung" />
+  </div>
+
+  <div className="card-media-text">
+    <h3>Fenster & Glas</h3>
               <p className="small">Streifenfreie Glasreinigung für Eingänge, Büros und Praxen.</p>
-            </div>
+  </div>
+</Link>
             <div className="card">
               <h3>Treppenhausreinigung</h3>
               <p className="small">Saubere Flure und Gemeinschaftsbereiche in Wohnanlagen.</p>

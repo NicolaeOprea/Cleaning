@@ -302,3 +302,322 @@ html, body {
   max-width: 100%;
   overflow-x: hidden;
 }
+/* HERO split layout */
+.hero-split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  align-items: center;
+}
+
+.hero-copy {
+  order: 1; /* text sus pe mobil */
+}
+
+.hero-media {
+  order: 2; /* carusel jos pe mobil */
+}
+
+@media (min-width: 900px) {
+  .hero-split {
+    grid-template-columns: 1.05fr 0.95fr; /* media stânga, text dreapta */
+    gap: 2rem;
+  }
+
+  .hero-media {
+    order: 1; /* stânga pe desktop */
+  }
+
+  .hero-copy {
+    order: 2; /* dreapta pe desktop */
+  }
+}
+
+/* Dust/Sand dissolve carousel */
+/* =========================
+   HERO LAYOUT
+========================= */
+.hero { padding: 48px 0; }
+
+.hero-split{
+  display:grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap:28px;
+  align-items:center;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--border, rgba(255,255,255,0.12));
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background: rgba(14,165,233,0.18);
+  color: var(--text, #fff);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--text, #fff);
+}
+
+.badge {
+  font-size: 12px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid var(--border, rgba(255,255,255,0.12));
+  color: var(--muted, rgba(255,255,255,0.78));
+  background: rgba(255,255,255,0.04);
+}
+
+/* =========================
+   DUST CAROUSEL
+========================= */
+
+.dust-wrap {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border, rgba(255,255,255,0.12));
+  background: rgba(14,165,233,0.06);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+}
+
+/* 2 straturi: next (jos), current (sus) */
+.dust-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transform: translateZ(0) scale(1.02);
+  filter: saturate(1.05);
+}
+
+.dust-slide--next {
+  z-index: 0;
+}
+
+.dust-slide--current {
+  z-index: 1;
+}
+
+/* tiles overlay */
+.dust-grid {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.dust-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: radial-gradient(
+    800px 300px at 70% 30%,
+    rgba(255,255,255,0.16),
+    rgba(255,255,255,0)
+  );
+}
+
+/* tile base */
+.dust-tile {
+  background-repeat: no-repeat;
+  will-change: transform, opacity, filter;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  contain: layout paint;
+
+  transition-property: transform, opacity, filter;
+  transition-duration: 700ms, 380ms, 420ms;
+  transition-timing-function:
+    cubic-bezier(.16, 1, .3, 1),   /* transform */
+    cubic-bezier(.2, .9, .2, 1),   /* opacity */
+    cubic-bezier(.2, .8, .2, 1);   /* filter */
+}
+
+/* idle: invizibile */
+.dust-tile.idle {
+  opacity: 0;
+  filter: blur(0px);
+  transform: translate3d(0,0,0) rotate(0) scale(1);
+  box-shadow: none;
+}
+
+/* ready: tiles vizibile, “lipite” pe imaginea de sus */
+.dust-tile.ready {
+  opacity: 1;
+  filter: blur(0px);
+  transform: translate3d(0,0,0) rotate(0) scale(1);
+  box-shadow: inset 0 0 0 0.5px rgba(255,255,255,0.12);
+}
+
+/* dissolve-out: se duc + dispar (se vede imaginea dedesubt) */
+.dust-tile.dissolve-out {
+  opacity: 0;
+  filter: blur(2px) contrast(1.05);
+  transform: translate3d(var(--sx), var(--sy), 0) rotate(var(--rot)) scale(1.06);
+  box-shadow: inset 0 0 0 0.5px rgba(255,255,255,0.12);
+}
+
+/* Ca să existe “momentul 0” stabil (reduce micro-lag) */
+@media (prefers-reduced-motion: no-preference) {
+  .dust-wrap,
+  .dust-slide,
+  .dust-tile {
+    transform: translateZ(0);
+  }
+}
+
+/* =========================
+   HERO (layout folosit în Home)
+   markup: .container.hero-split + .hero-copy + .hero-media
+========================= */
+
+.hero {
+  padding: 48px 0;
+}
+
+.hero-split {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 28px;
+  align-items: center;
+}
+
+/* Desktop: carousel stânga, text dreapta */
+.hero-media { order: 1; }
+.hero-copy  { order: 2; }
+
+/* =========================
+   RESPONSIVE (Telefon)
+========================= */
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 28px 0;
+  }
+
+  .hero-split {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  /* Mobile: text sus, carousel jos */
+  .hero-copy  { order: 1; }
+  .hero-media { order: 2; }
+}
+
+@media (max-width: 520px) {
+  .hero-cta {
+    display: grid;
+    gap: 10px;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+  }
+}
+
+/* =========================
+   CARD cu imagine stânga + text dreapta
+   Hover subtil + click (FĂRĂ overlap)
+========================= */
+
+.card.card-media {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 14px;
+  align-items: center;
+
+  padding: 14px;
+  border-radius: 16px;
+  cursor: pointer;
+
+  transition:
+    transform 220ms cubic-bezier(.2,.8,.2,1),
+    box-shadow 220ms cubic-bezier(.2,.8,.2,1),
+    background-color 220ms ease;
+}
+
+.card.card-media:hover,
+.card.card-media:focus-within {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+  background-color: rgba(255,255,255,0.02);
+}
+
+.card.card-media:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.16);
+}
+
+/* =========================
+   IMAGINE (FIXED BOX)
+========================= */
+
+.card-media-img {
+  width: 120px;
+  height: 120px;
+  overflow: hidden;        /* 🔴 CHEIA */
+  border-radius: 12px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+/* DOAR imaginea se scalează, NU containerul */
+.card-media-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+
+  transition: transform 320ms cubic-bezier(.2,.8,.2,1);
+}
+
+/* hover subtil, fără overlap */
+.card.card-media:hover .card-media-img img {
+  transform: scale(1.08);
+}
+
+/* =========================
+   TEXT
+========================= */
+
+.card-media-text {
+  min-width: 0; /* 🔴 important pt. grid */
+}
+
+.card-media-text h3 {
+  margin: 0 0 6px;
+}
+
+.card-media-text .small {
+  margin: 0;
+  opacity: 0.85;
+}
+
+/* =========================
+   RESPONSIVE (Telefon)
+========================= */
+
+@media (max-width: 520px) {
+  .card.card-media {
+    grid-template-columns: 72px 1fr;
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .card-media-img {
+    width: 72px;
+    height: 72px;
+  }
+}
