@@ -64,32 +64,28 @@ export default function DustCarousel({
 
     if (timerRef.current) clearInterval(timerRef.current);
 
-    const tick = async () => {
-      if (runningRef.current) return;
-      if (images.length < 2) return;
-      runningRef.current = true;
+const tick = () => {
+  if (runningRef.current) return;
+  if (images.length < 2) return;
 
-      const curr = currRef.current;
-      const next = (curr + 1) % images.length;
+  runningRef.current = true;
 
-      // pregătești imaginea dedesubt
-      setNextIndex(next);
+  const curr = currRef.current;
+  const next = (curr + 1) % images.length;
 
-      // pornești doar dissolve-out pe tiles (care reprezintă imaginea de SUS)
-      setPhase("dissolve");
+  // pregătești imaginea dedesubt (opțional, dar ok)
+  setNextIndex(next);
 
-      // aștepți să se termine inclusiv ultimul delay
-      await wait(totalDissolveTime);
+  // schimbare imediată (fără dust, fără wait)
+  setCurrIndex(next);
+  currRef.current = next;
 
-      // după dissolve, “tai” imaginea de sus => rămâne dedesubt
-      setCurrIndex(next);
-      currRef.current = next;
+  // nu mai folosim phase deloc
+  setPhase("idle");
 
-      // revii idle (tiles nu mai sunt vizibile)
-      setPhase("idle");
+  runningRef.current = false;
+};
 
-      runningRef.current = false;
-    };
 
     // pornește periodic
     timerRef.current = setInterval(tick, intervalMs);

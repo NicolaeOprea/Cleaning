@@ -277,16 +277,85 @@ a {
   transform: scale(0.98);
 }
 
+/* =========================
+   MOBILE MENU – hint vizual cu deget 👈
+========================= */
+
 .mobile-panel {
   border-top: 1px solid var(--border);
   background: white;
 }
 
+/* container linkuri */
 .mobile-links {
   padding: 0.9rem 1rem 1.1rem;
   display: grid;
   gap: 10px;
 }
+
+/* linkuri simple (NU butoane) */
+.mobile-panel .mobile-links a:not(.btn) {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* text stânga, icon dreapta */
+  gap: 12px;
+
+  padding: 12px 8px;
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
+}
+
+/* hover / tap feedback */
+.mobile-panel .mobile-links a:not(.btn):hover {
+  background: rgba(0,0,0,0.04);
+  transform: translateX(-1px);
+}
+
+/* icon deget (apare automat când meniul e deschis) */
+.mobile-panel .mobile-links a:not(.btn)::after {
+  content: "👈";
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.85;
+  flex: 0 0 auto;
+
+  /* animația */
+  animation: hint-left 1.4s ease-in-out infinite;
+}
+
+/* animație fină – “cheamă spre stânga” */
+@keyframes hint-left {
+  0%   { transform: translateX(0);   opacity: 0.6; }
+  50%  { transform: translateX(-6px); opacity: 1; }
+  100% { transform: translateX(0);   opacity: 0.6; }
+}
+
+/* butoanele NU primesc icon */
+.mobile-panel .mobile-links .btn::after {
+  content: none !important;
+  animation: none !important;
+}
+
+/* =========================
+   POLISH UX (opțional, dar recomandat)
+========================= */
+
+/* cursor clar */
+.mobile-panel .mobile-links a {
+  cursor: pointer;
+}
+
+/* prevenim selecții aiurea */
+.mobile-panel .mobile-links a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 
 .desktop-nav { display: none; }
 
@@ -404,28 +473,15 @@ html, body {
 }
 
 .dust-slide--current {
-  z-index: 1;
+  transition: opacity 380ms ease;
 }
+
 
 /* tiles overlay */
-.dust-grid {
-  position: absolute;
-  inset: 0;
-  display: grid;
-  pointer-events: none;
-  z-index: 2;
-}
+
 
 .dust-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 3;
-  pointer-events: none;
-  background: radial-gradient(
-    800px 300px at 70% 30%,
-    rgba(255,255,255,0.16),
-    rgba(255,255,255,0)
-  );
+ display: none;
 }
 
 /* tile base */
@@ -489,7 +545,7 @@ html, body {
 .hero-split {
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
-  gap: 28px;
+  gap: 48px;
   align-items: center;
 }
 
@@ -532,21 +588,26 @@ html, body {
    Hover subtil + click (FĂRĂ overlap)
 ========================= */
 
-.card.card-media {
+.card.card-media{
   display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 14px;
+  grid-template-columns: minmax(160px, 240px) 1fr; /* ⬅️ în loc de 500px */
+  gap: 18px; /* puțin mai aerisit */
   align-items: center;
-
-  padding: 14px;
-  border-radius: 16px;
+  margin-bottom: 10px;
   cursor: pointer;
+
+  will-change: transform;
+  transform: translateZ(0);
 
   transition:
     transform 220ms cubic-bezier(.2,.8,.2,1),
     box-shadow 220ms cubic-bezier(.2,.8,.2,1),
     background-color 220ms ease;
 }
+.card.card-media{
+  grid-template-columns: auto 1fr;
+}
+
 
 .card.card-media:hover,
 .card.card-media:focus-within {
@@ -564,13 +625,13 @@ html, body {
    IMAGINE (FIXED BOX)
 ========================= */
 
+
 .card-media-img {
-  width: 120px;
-  height: 120px;
-  overflow: hidden;        /* 🔴 CHEIA */
-  border-radius: 12px;
-  flex-shrink: 0;
-  position: relative;
+  width: 100%;              /* ⬅️ NU fix */
+  max-width: 300px;         /* limită sigură */
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
 /* DOAR imaginea se scalează, NU containerul */
@@ -613,11 +674,50 @@ html, body {
   .card.card-media {
     grid-template-columns: 72px 1fr;
     gap: 12px;
-    padding: 12px;
+    padding: 4px;
   }
 
   .card-media-img {
     width: 72px;
     height: 72px;
+  }
+}
+@media (max-width: 700px){
+  .card.card-media{
+    grid-template-columns: 1fr;
+  }
+}
+
+.header-mail a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text, #fff);
+  text-decoration: none;
+
+  opacity: 0.9;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.header-mail a:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+
+.mail-icon {
+  font-size: 16px;
+  line-height: 1;
+}
+
+.mail-text {
+  white-space: nowrap;
+}
+
+@media (max-width: 600px) {
+  .mail-text {
+    display: none;
   }
 }

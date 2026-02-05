@@ -22,6 +22,13 @@ export default function Header() {
           </span>
         </Link>
 
+        <div className="header-mail">
+  <a href="mailto:contact@exemplu.de">
+    <span className="mail-icon">✉️</span>
+    <span className="mail-text">contact@exemplu.de</span>
+  </a>
+</div>
+
         {/* Right actions (mobile) */}
         <div className="header-actions">
           <a className="icon-btn" href="tel:+4917600000000" aria-label="Anrufen">
@@ -40,7 +47,7 @@ export default function Header() {
         <nav className="desktop-nav">
           <NavLink to="/leistungen" style={linkStyle}>Leistungen</NavLink>
           <NavLink to="/praxis" style={linkStyle}>Praxis</NavLink>
-          <NavLink to="/preise" style={linkStyle}>Preise</NavLink>
+
           <NavLink to="/referenzen" style={linkStyle}>Referenzen</NavLink>
           <NavLink to="/kontakt" className="btn">Angebot</NavLink>
           <a className="btn secondary" href="tel:+4917600000000">Anrufen</a>
