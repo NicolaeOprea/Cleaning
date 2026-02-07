@@ -1,6 +1,7 @@
 
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import logo from "../assets/Saba-Clean1.png";
 
 const linkStyle = ({ isActive }) => ({
   color: isActive ? "var(--primary-dark)" : "var(--text)",
@@ -15,9 +16,9 @@ export default function Header() {
       <div className="container header-row">
         {/* Brand */}
         <Link to="/" className="brand" onClick={() => setOpen(false)}>
-          <span className="brand-badge">A</span>
+          <img src={logo} alt="SABA Reinigung München" className="brand-logo" />
           <span className="brand-text">
-            <span className="brand-name">ABBAS</span>
+            <span className="brand-name">SABA</span>
             <span className="brand-sub">Reinigung • München</span>
           </span>
         </Link>
