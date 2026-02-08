@@ -66,7 +66,7 @@ export default function Header() {
               Praxisreinigung
             </NavLink>
             <NavLink to="/preise" style={linkStyle} onClick={() => setOpen(false)}>
-              Preise & Angebot
+              UberUns
             </NavLink>
             <NavLink to="/referenzen" style={linkStyle} onClick={() => setOpen(false)}>
               Referenzen

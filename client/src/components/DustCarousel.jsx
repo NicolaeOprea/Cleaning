@@ -1,163 +1,113 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function DustCarousel({
   images = [],
-  cols = 26,
-  rows = 14,
   intervalMs = 5200,
-  height = 320,
+  height,
   radius = 16,
+  fadeMs = 420,      // cât durează fade-ul
+  holdMs = 80,       // mic buffer între preload și start fade
 }) {
-  const total = cols * rows;
+  const [frontIndex, setFrontIndex] = useState(0);
+  const [backIndex, setBackIndex] = useState(images.length > 1 ? 1 : 0);
+  const [isFading, setIsFading] = useState(false);
 
-  // indexul imaginii de sus (cea care se “sparge”)
-  const [currIndex, setCurrIndex] = useState(0);
-  // indexul imaginii de jos (cea care rămâne după val)
-  const [nextIndex, setNextIndex] = useState(images.length > 1 ? 1 : 0);
-
-  // phase: idle | dissolve
-  const [phase, setPhase] = useState("idle");
-
-  const currRef = useRef(0);
   const timerRef = useRef(null);
   const runningRef = useRef(false);
-
-  // Durate “reale” pentru așteptare (trebuie să includă și cel mai mare delay)
-  // wave max ~ (cols-1)*14 + (rows-1)*6, jitter max 89
-  const maxDelay = useMemo(() => {
-    const waveMax = (cols - 1) * 14 + (rows - 1) * 6;
-    const jitterMax = 89;
-    return waveMax + jitterMax; // ms
-  }, [cols, rows]);
-
-  const dissolveMs = 700; // trebuie să corespundă cu CSS transition pe transform
-  const totalDissolveTime = maxDelay + dissolveMs + 40; // mic buffer
-
-  const tiles = useMemo(() => {
-    const arr = [];
-    for (let i = 0; i < total; i++) {
-      const r = Math.floor(i / cols);
-      const c = i % cols;
-
-      // val: stânga -> dreapta + puțin de sus -> jos
-      const wave = c * 14 + r * 6;
-      const jitter = (i * 17) % 90;
-      const delay = wave + jitter;
-
-      const sx = ((i * 29) % 60) - 30;
-      const sy = ((i * 31) % 50) - 25;
-      const rot = ((i * 13) % 18) - 9;
-
-      arr.push({ i, r, c, delay, sx, sy, rot });
-    }
-    return arr;
-  }, [cols, rows, total]);
+  const frontRef = useRef(0);
 
   useEffect(() => {
     if (!images || images.length === 0) return;
 
-    // init
-    currRef.current = 0;
-    setCurrIndex(0);
-    setNextIndex(images.length > 1 ? 1 : 0);
-    setPhase("idle");
+    // reset când se schimbă lista
+    frontRef.current = 0;
+    setFrontIndex(0);
+    setBackIndex(images.length > 1 ? 1 : 0);
+    setIsFading(false);
 
     if (timerRef.current) clearInterval(timerRef.current);
 
-const tick = () => {
-  if (runningRef.current) return;
-  if (images.length < 2) return;
+    if (images.length < 2) return;
 
-  runningRef.current = true;
+    const tick = async () => {
+      if (runningRef.current) return;
+      runningRef.current = true;
 
-  const curr = currRef.current;
-  const next = (curr + 1) % images.length;
+      const curr = frontRef.current;
+      const next = (curr + 1) % images.length;
 
-  // pregătești imaginea dedesubt (opțional, dar ok)
-  setNextIndex(next);
+      // 1) preload următoarea imagine (lazy dar sigur)
+      await preloadImage(images[next]);
 
-  // schimbare imediată (fără dust, fără wait)
-  setCurrIndex(next);
-  currRef.current = next;
+      // 2) setezi back layer cu următoarea imagine
+      setBackIndex(next);
 
-  // nu mai folosim phase deloc
-  setPhase("idle");
+      // 3) mic buffer (opțional) ca să fie “așezată”
+      if (holdMs) await wait(holdMs);
 
-  runningRef.current = false;
-};
+      // 4) pornești fade (front dispare, back rămâne)
+      // folosim rAF ca să fim siguri că browserul prinde schimbarea
+      requestAnimationFrame(() => setIsFading(true));
 
+      // 5) după fade, “commit”: back devine front
+      await wait(fadeMs);
 
-    // pornește periodic
+      setFrontIndex(next);
+      frontRef.current = next;
+      setIsFading(false);
+
+      runningRef.current = false;
+    };
+
     timerRef.current = setInterval(tick, intervalMs);
 
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
       timerRef.current = null;
     };
-  }, [images, intervalMs, totalDissolveTime]);
+  }, [images, intervalMs, fadeMs, holdMs]);
 
   if (!images || images.length === 0) return null;
 
-  const currUrl = images[currIndex];
-  const nextUrl = images[nextIndex];
-
-  if (!currUrl) return null;
+  const frontUrl = images[frontIndex];
+  const backUrl = images[backIndex] || frontUrl;
 
   return (
     <div
-      className="dust-wrap"
+      className="dust-wrap carousel-wrap"
       style={{
-        height,
+        ...(typeof height === "number" ? { height } : null),
         borderRadius: radius,
       }}
     >
-      {/* Imaginea dedesubt (următoarea) */}
+      {/* Back layer (următoarea imagine) */}
       <div
-        className="dust-slide dust-slide--next"
-        style={{ backgroundImage: `url(${nextUrl || currUrl})` }}
-      />
-
-      {/* Imaginea de sus (curentă) */}
-      <div
-        className="dust-slide dust-slide--current"
-        style={{ backgroundImage: `url(${currUrl})` }}
-      />
-
-      {/* Tiles: reprezintă DOAR imaginea curentă (de sus) */}
-      <div
-        className="dust-grid"
-        style={{
-          gridTemplateColumns: `repeat(${cols}, 1fr)`,
-          gridTemplateRows: `repeat(${rows}, 1fr)`,
-        }}
+        className="dust-slide dust-slide--back"
+        style={{ backgroundImage: `url(${backUrl})` }}
         aria-hidden="true"
-      >
-        {tiles.map((t) => {
-          const x = (t.c / (cols - 1)) * 100;
-          const y = (t.r / (rows - 1)) * 100;
+      />
 
-          return (
-            <div
-              key={t.i}
-              className={`dust-tile ${phase === "dissolve" ? "ready dissolve-out" : "idle"}`}
-
-              style={{
-                backgroundImage: `url(${currUrl})`,
-                backgroundSize: `${cols * 100}% ${rows * 100}%`,
-                backgroundPosition: `${x}% ${y}%`,
-                transitionDelay: `${t.delay}ms`,
-                "--sx": `${t.sx}px`,
-                "--sy": `${t.sy}px`,
-                "--rot": `${t.rot}deg`,
-              }}
-            />
-          );
-        })}
-      </div>
-
-      <div className="dust-overlay" />
+      {/* Front layer (imaginea curentă) */}
+      <div
+        className="dust-slide dust-slide--front"
+        style={{
+          backgroundImage: `url(${frontUrl})`,
+          opacity: isFading ? 0 : 1,
+          transitionDuration: `${fadeMs}ms`,
+        }}
+      />
     </div>
   );
+}
+
+function preloadImage(src) {
+  return new Promise((resolve) => {
+    if (!src) return resolve();
+    const img = new Image();
+    img.onload = () => resolve();
+    img.onerror = () => resolve(); // nu blocăm caruselul dacă o imagine e problematică
+    img.src = src;
+  });
 }
 
 function wait(ms) {

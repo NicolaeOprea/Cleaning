@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
 import DustCarousel from "../components/DustCarousel";
-import buro1 from "../assets/buro/buro-1.jpg";
-import garten1 from "../assets/garten/garten-1.jpg";
-import fenster1 from "../assets/fenster/fenster-1.jpg";
-import praxis1 from "../assets/praxis/praxis-1.jpg";
-import treppe1 from "../assets/treppe/treppe-1.jpg";
-import hausmeister1 from "../assets/meister/hausmeister1.jpg"
+import buro1 from "../assets/start/buro-1.jpg";
+import garten1 from "../assets/start/garten-1.jpg";
+import fenster1 from "../assets/start/fenster-1.jpg";
+import praxis1 from "../assets/start/praxis-1.jpg";
+import treppe1 from "../assets/start/treppe-1.jpg";
 
-const heroImages = [buro1, praxis1, fenster1, garten1, treppe1,hausmeister1];
+
+const heroImages = [buro1, praxis1, fenster1, garten1, treppe1];
 export default function Home() {
   return (
     <main>
@@ -20,7 +20,7 @@ export default function Home() {
             <h1>Gebäudereinigung & Hausmeisterservice in München</h1>
 
             <p>
-              ABBAS bietet zuverlässige Reinigung für <b>Büros, Praxen</b> und
+              SABA bietet zuverlässige Reinigung für <b>Büros, Praxen</b> und
               Wohnanlagen – diskret, gründlich und planbar. Fenster,
               Treppenhäuser und Außenbereiche inklusive.
             </p>
@@ -49,7 +49,7 @@ export default function Home() {
           <div className="hero-media">
             <DustCarousel
               images={heroImages}
-              height={340}
+             
               cols={26}
               rows={14}
               intervalMs={2200}
@@ -121,7 +121,7 @@ export default function Home() {
 
             <Link to="/meister" className="card card-media">
               <div className="card-media-img">
-                <img src={hausmeister1} alt="Hausmeisterservice" />
+                <img src={garten1} alt="Hausmeisterservice" />
               </div>
 
               <div className="card-media-text">
@@ -132,18 +132,7 @@ export default function Home() {
               </div>
             </Link>
           </div>
-          <Link to="/garten" className="card card-media">
-            <div className="card-media-img">
-              <img src={garten1} alt="Hausmeisterservice" />
-            </div>
-
-            <div className="card-media-text">
-              <h3>Gartenpflege</h3>
-              <p className="small">
-                Laub, Hecken schneiden & formen, Pflege von Außenbereichen.
-              </p>
-            </div>
-          </Link>
+          
 
           <div style={{ marginTop: "1.25rem" }}>
             <Link className="btn secondary" to="/leistungen">
@@ -152,6 +141,29 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section className="leistungen-section">
+         
+        <h1>Referenzen</h1>
+        
+        <div className="container">
+          <div className="leistungen-carousel">
+  <div className="carousel-track">
+    {/* prima rundă */}
+    <img src={buro1} alt="Leistung 1" />
+    <img src={garten1} alt="Leistung 2" />
+    <img src={treppe1} alt="Leistung 3" />
+    <img src={fenster1} alt="Leistung 4" />
+
+    {/* duplicat pentru loop */}
+    <img src={buro1} alt="" aria-hidden="true" />
+    <img src={garten1} alt="" aria-hidden="true" />
+    <img src={treppe1} alt="" aria-hidden="true" />
+    <img src={fenster1} alt="" aria-hidden="true" />
+  </div>
+  </div>
+  </div>
+</section>
 
       <section
         className="section"

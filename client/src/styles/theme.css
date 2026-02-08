@@ -194,19 +194,22 @@ a {
   }
 
   .btn {
-    width: 100%;
+    width: 75%;
   }
 }
 
 /* HEADER (compact, mobile-first) */
-.site-header {
-  position: sticky;
+.site-header{
+  position: fixed;
   top: 0;
-  z-index: 50;
+  left: 0;
+  right: 0;
+  z-index: 999;
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
+
 
 .header-row {
   display: flex;
@@ -324,6 +327,7 @@ a {
   line-height: 1;
   opacity: 0.85;
   flex: 0 0 auto;
+  margin-right: 20rem;
 
   /* animația */
   animation: hint-left 1.4s ease-in-out infinite;
@@ -447,7 +451,7 @@ html, body {
 }
 
 /* =========================
-   DUST CAROUSEL
+   CAROUSEL (fără dust)
 ========================= */
 
 .dust-wrap {
@@ -456,9 +460,13 @@ html, body {
   border: 1px solid var(--border, rgba(255,255,255,0.12));
   background: rgba(14,165,233,0.06);
   box-shadow: 0 10px 30px rgba(0,0,0,0.22);
+  height: 340px;
 }
 
-/* 2 straturi: next (jos), current (sus) */
+.carousel-wrap {
+  position: relative;
+}
+
 .dust-slide {
   position: absolute;
   inset: 0;
@@ -468,69 +476,40 @@ html, body {
   filter: saturate(1.05);
 }
 
-.dust-slide--next {
+/* back stă dedesubt */
+.dust-slide--back {
   z-index: 0;
 }
 
-.dust-slide--current {
-  transition: opacity 380ms ease;
+/* front e deasupra și își schimbă opacity */
+.dust-slide--front {
+  z-index: 1;
+  transition-property: opacity;
+  transition-timing-function: ease;
 }
 
-
-/* tiles overlay */
-
-
-.dust-overlay {
- display: none;
-}
-
-/* tile base */
-.dust-tile {
-  background-repeat: no-repeat;
-  will-change: transform, opacity, filter;
-  transform: translate3d(0, 0, 0);
-  backface-visibility: hidden;
-  contain: layout paint;
-
-  transition-property: transform, opacity, filter;
-  transition-duration: 700ms, 380ms, 420ms;
-  transition-timing-function:
-    cubic-bezier(.16, 1, .3, 1),   /* transform */
-    cubic-bezier(.2, .9, .2, 1),   /* opacity */
-    cubic-bezier(.2, .8, .2, 1);   /* filter */
-}
-
-/* idle: invizibile */
-.dust-tile.idle {
-  opacity: 0;
-  filter: blur(0px);
-  transform: translate3d(0,0,0) rotate(0) scale(1);
-  box-shadow: none;
-}
-
-/* ready: tiles vizibile, “lipite” pe imaginea de sus */
-.dust-tile.ready {
-  opacity: 1;
-  filter: blur(0px);
-  transform: translate3d(0,0,0) rotate(0) scale(1);
-  box-shadow: inset 0 0 0 0.5px rgba(255,255,255,0.12);
-}
-
-/* dissolve-out: se duc + dispar (se vede imaginea dedesubt) */
-.dust-tile.dissolve-out {
-  opacity: 0;
-  filter: blur(2px) contrast(1.05);
-  transform: translate3d(var(--sx), var(--sy), 0) rotate(var(--rot)) scale(1.06);
-  box-shadow: inset 0 0 0 0.5px rgba(255,255,255,0.12);
-}
-
-/* Ca să existe “momentul 0” stabil (reduce micro-lag) */
-@media (prefers-reduced-motion: no-preference) {
-  .dust-wrap,
-  .dust-slide,
-  .dust-tile {
-    transform: translateZ(0);
+/* dacă vrei și mai smooth: respectă reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .dust-slide--front {
+    transition-duration: 0ms !important;
   }
+}
+
+
+/* Mobil: mai scund pe verticală (doar dacă TU setezi height din CSS, nu din prop) */
+@media (max-width: 768px) {
+  .dust-wrap {
+    height: 28vh;
+    min-height: 200px;
+    border-radius: 10px;
+  }
+}
+
+/* Safety: dacă ai rămas cu markup vechi, îl ascundem complet */
+.dust-grid,
+.dust-overlay,
+.dust-tile {
+  display: none !important;
 }
 
 /* =========================
@@ -682,18 +661,14 @@ html, body {
     height: 72px;
   }
 }
-@media (max-width: 700px){
-  .card.card-media{
-    grid-template-columns: 1fr;
-  }
-}
+
 
 .header-mail a {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
 
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text, #fff);
   text-decoration: none;
@@ -708,7 +683,7 @@ html, body {
 }
 
 .mail-icon {
-  font-size: 16px;
+  font-size: 25px;
   line-height: 1;
 }
 

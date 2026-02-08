@@ -1,0 +1,90 @@
+/* =========================
+   LEISTUNGEN – CAROUSEL ORIZONTAL
+========================= */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 1rem;
+}
+.leistungen-section {
+  margin: 48px 0;
+}
+
+.leistungen-carousel {
+  overflow: hidden;
+  width: 100%; 
+   /* fade premium la margini */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+           /* ia lățimea containerului */
+}
+
+.leistungen-section h1 {
+    margin-left: 11rem;
+}
+.carousel-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+
+  animation: scroll-x 28s linear infinite;
+}
+
+.carousel-track img {
+  width: 260px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 16px;
+  flex-shrink: 0;
+
+  box-shadow: 0 8px 22px rgba(0,0,0,0.18);
+}
+
+/* animația propriu-zisă */
+@keyframes scroll-x {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* pauză la hover (desktop) */
+@media (hover: hover) {
+  .leistungen-carousel:hover .carousel-track {
+    animation-play-state: paused;
+  }
+}
+
+@media (max-width: 600px) {
+  .leistungen-carousel {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 14%,
+      black 86%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 14%,
+      black 86%,
+      transparent
+    );
+  }
+}
+

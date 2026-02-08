@@ -6,7 +6,7 @@ export default function Impressum() {
       <div className="card">
         <p><b>ABBAS Gebäudereinigung & Hausmeisterservice</b></p>
         <p className="small">
-          Inhaber: ABBAS (Einzelunternehmen)<br />
+          Inhaber: SABA (Einzelunternehmen)<br />
           Straße Nr. (Platzhalter)<br />
           80331 München, Deutschland
         </p>
