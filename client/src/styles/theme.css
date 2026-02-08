@@ -1,21 +1,28 @@
+/* =========================================================
+   0) THEME / GLOBAL RESET
+   - Variabile, reset, layout de bază
+========================================================= */
+
 :root {
-  --primary: #0ea5e9;       /* albastru apă de mare */
+  --primary: #0ea5e9;
   --primary-dark: #0284c7;
+
   --bg: #ffffff;
   --text: #0f172a;
   --muted: #64748b;
+
   --border: #e2e8f0;
 }
 
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
-html,body {
+html, body {
   margin: 0;
   font-family: Inter, system-ui, -apple-system, sans-serif;
   background: var(--bg);
   color: var(--text);
+
+  /* safety overflow */
   max-width: 100%;
   overflow-x: hidden;
 }
@@ -27,132 +34,66 @@ a {
 
 .container {
   max-width: 1200px;
-  margin: auto;
+  margin: 0 auto;
   padding: 0 1rem;
 }
 
+.section { padding: 4rem 0; }
+
+
+/* =========================================================
+   1) UI BASICS
+   - Butoane, badge, card, text helpers, forms
+========================================================= */
+
 .btn {
   background: var(--primary);
-  color: white;
+  color: #fff;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
   padding: 0.75rem 1.25rem;
-  border-radius: 6px;
-  border: none;
+  border-radius: 12px;
+  border: 1px solid var(--border);
   cursor: pointer;
+
+  font-weight: 600;
+  font-size: 14px;
 }
 
-.btn:hover {
-  background: var(--primary-dark);
-}
+.btn:hover { background: var(--primary-dark); }
 
-.section {
-  padding: 4rem 0;
+.btn.secondary {
+  background: #fff;
+  color: var(--text);
+  border: 1px solid var(--border);
 }
+.btn.secondary:hover { border-color: var(--primary); }
 
-.grid {
-  width: 100%;
-}
-
-.grid-3 {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-}
-
-.grid-2 {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-@media (max-width: 900px) {
-  .grid-3, .grid-2 {
-    grid-template-columns: 1fr;
-  }
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  background: #fff;
 }
 
 .card {
   border: 1px solid var(--border);
   border-radius: 12px;
   padding: 1.25rem;
-  background: white;
+  background: #fff;
   max-width: 100%;
   overflow: hidden;
 }
 
-.badge {
-  display: inline-block;
-  padding: 0.25rem 0.5rem;
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font-size: 0.85rem;
-  color: var(--muted);
-}
-
-.hero {
-  padding: 4rem 0 2rem;
-  background: linear-gradient(180deg, rgba(14,165,233,0.10), rgba(255,255,255,0));
-  border-bottom: 1px solid var(--border);
-}
-
-.hero h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  margin: 0.5rem 0 0.75rem;
-}
-
-.hero p {
-  color: var(--muted);
-  font-size: 1.05rem;
-  line-height: 1.6;
-  margin: 0 0 1.25rem;
-}
-
-.hero-cta {
-  display: flex;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.btn.secondary {
-  background: white;
-  color: var(--text);
-  border: 1px solid var(--border);
-}
-
-.btn.secondary:hover {
-  border-color: var(--primary);
-}
-
-.kpi {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  color: var(--muted);
-  margin-top: 1.25rem;
-  font-size: 0.95rem;
-}
-
-.kpi span {
-  border: 1px dashed var(--border);
-  padding: 0.4rem 0.6rem;
-  border-radius: 10px;
-  background: white;
-}
-
-.input, .textarea {
-  width: 100%;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 0.75rem 0.9rem;
-  font-size: 1rem;
-}
-
-.textarea {
-  min-height: 140px;
-  resize: vertical;
-}
-
-.label {
+.small {
   font-size: 0.9rem;
   color: var(--muted);
-  margin-bottom: 0.35rem;
-  display: block;
 }
 
 .alert {
@@ -162,80 +103,76 @@ a {
   background: rgba(14,165,233,0.08);
 }
 
-.small {
+.label {
   font-size: 0.9rem;
   color: var(--muted);
+  margin-bottom: 0.35rem;
+  display: block;
 }
 
-/* NAVIGATION */
-.desktop-nav {
-  display: none;
+.input, .textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  font-size: 1rem;
+}
+.textarea {
+  min-height: 140px;
+  resize: vertical;
 }
 
-@media (min-width: 900px) {
-  .desktop-nav {
-    display: flex;
-  }
 
-  header button[aria-label="Menü öffnen"] {
-    display: none;
-  }
+/* =========================================================
+   2) GRID HELPERS (dacă le folosești în pagini)
+========================================================= */
+
+.grid { width: 100%; }
+
+.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+@media (max-width: 900px) {
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
 }
 
-@media (max-width: 600px) {
-  .container {
-    max-width: 100%;
-    overflow-x: hidden;
-  }
 
-  .hero-cta {
-    flex-direction: column;
-    align-items: stretch;
-  }
+/* =========================================================
+   3) HEADER + NAV
+   - Fix sus, brand, mail, acțiuni mobile, desktop nav
+========================================================= */
 
-  .btn {
-    width: 75%;
-  }
-}
-
-/* HEADER (compact, mobile-first) */
-.site-header{
+.site-header {
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  top: 0; left: 0; right: 0;
   z-index: 999;
+
   background: rgba(255,255,255,0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
 
-
 .header-row {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 56px; /* compact */
+
+  height: 56px;
   gap: 0.75rem;
 }
 
+/* Brand */
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  min-width: 0; /* allow truncation */
+  gap: 12px;
+  min-width: 0;
 }
 
-.brand-badge {
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  background: rgba(14,165,233,0.15);
-  border: 1px solid var(--border);
-  display: grid;
-  place-items: center;
-  font-weight: 800;
-  color: var(--primary-dark);
+.brand-logo {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
   flex: 0 0 auto;
 }
 
@@ -259,6 +196,31 @@ a {
   text-overflow: ellipsis;
 }
 
+/* Mail (header) */
+.header-mail a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text);
+  opacity: 0.9;
+
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+.header-mail a:hover {
+  opacity: 1;
+  transform: translateY(-1px);
+}
+.mail-icon { font-size: 22px; line-height: 1; }
+.mail-text { white-space: nowrap; }
+
+@media (max-width: 600px) {
+  .mail-text { display: none; }
+}
+
+/* Mobile actions */
 .header-actions {
   display: flex;
   gap: 0.5rem;
@@ -270,26 +232,57 @@ a {
   height: 38px;
   border-radius: 10px;
   border: 1px solid var(--border);
-  background: white;
+  background: #fff;
+
   display: grid;
   place-items: center;
   cursor: pointer;
 }
+.icon-btn:active { transform: scale(0.98); }
 
-.icon-btn:active {
-  transform: scale(0.98);
+/* Desktop nav (hidden mobile) */
+.desktop-nav { display: none; }
+
+@media (min-width: 900px) {
+  .header-row { height: 72px; }
+  .header-actions { display: none; }
+
+  .desktop-nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
 }
 
-/* =========================
-   MOBILE MENU – hint vizual cu deget 👈
-========================= */
+/* =========================================================
+   4) MOBILE MENU PANEL (smooth dropdown)
+   - IMPORTANT: panel stă în DOM și se animă cu .is-open
+========================================================= */
 
 .mobile-panel {
   border-top: 1px solid var(--border);
-  background: white;
+  background: #fff;
+
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  transform: translateY(-10px);
+  pointer-events: none;
+
+  transition:
+    max-height 560ms cubic-bezier(.2,.9,.2,1),
+    transform 420ms cubic-bezier(.2,.9,.2,1),
+    opacity 240ms ease 80ms; /* mic delay = mai “fluid” */
 }
 
-/* container linkuri */
+.mobile-panel.is-open {
+  max-height: 560px; /* un pic mai mare decât înainte */
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+
 .mobile-links {
   padding: 0.9rem 1rem 1.1rem;
   display: grid;
@@ -300,82 +293,89 @@ a {
 .mobile-panel .mobile-links a:not(.btn) {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* text stânga, icon dreapta */
-  gap: 12px;
+  justify-content: space-between;
 
   padding: 12px 8px;
   border-radius: 12px;
-  text-decoration: none;
-  color: inherit;
-  position: relative;
 
-  transition:
-    background-color 160ms ease,
-    transform 160ms ease;
+  transition: background-color 160ms ease, transform 160ms ease;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* hover / tap feedback */
 .mobile-panel .mobile-links a:not(.btn):hover {
   background: rgba(0,0,0,0.04);
   transform: translateX(-1px);
 }
 
-/* icon deget (apare automat când meniul e deschis) */
+/* 👉 dacă nu mai vrei “degetul” ca hint, lasă display:none */
 .mobile-panel .mobile-links a:not(.btn)::after {
   content: "👈";
   font-size: 16px;
-  line-height: 1;
   opacity: 0.85;
-  flex: 0 0 auto;
-  margin-right: 20rem;
-
-  /* animația */
   animation: hint-left 1.4s ease-in-out infinite;
 }
 
-/* animație fină – “cheamă spre stânga” */
 @keyframes hint-left {
-  0%   { transform: translateX(0);   opacity: 0.6; }
+  0%   { transform: translateX(0); opacity: 0.6; }
   50%  { transform: translateX(-6px); opacity: 1; }
-  100% { transform: translateX(0);   opacity: 0.6; }
+  100% { transform: translateX(0); opacity: 0.6; }
 }
 
 /* butoanele NU primesc icon */
-.mobile-panel .mobile-links .btn::after {
-  content: none !important;
-  animation: none !important;
+.mobile-panel .mobile-links .btn::after { content: none; animation: none; }
+
+
+/* =========================================================
+   5) HERO SECTION
+   - Background, copy + media (carusel sus, doar 1)
+========================================================= */
+
+.hero {
+  background: linear-gradient(
+    180deg,
+    rgba(14,165,233,0.10),
+    rgba(255,255,255,0)
+  );
+  border-bottom: 1px solid var(--border);
+  margin-top: 30px;
 }
 
-/* =========================
-   POLISH UX (opțional, dar recomandat)
-========================= */
 
-/* cursor clar */
-.mobile-panel .mobile-links a {
-  cursor: pointer;
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin: 0.5rem 0 0.75rem;
 }
 
-/* prevenim selecții aiurea */
-.mobile-panel .mobile-links a {
-  -webkit-tap-highlight-color: transparent;
+.hero p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin: 0 0 1.25rem;
 }
 
-
-.desktop-nav { display: none; }
-
-/* Desktop */
-@media (min-width: 900px) {
-  .header-row { height: 72px; }
-  .header-actions { display: none; }
-  .desktop-nav { display: flex; gap: 1rem; align-items: center; }
+.hero-cta {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
-/* Stop horizontal overflow globally */
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
+.kpi {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  color: var(--muted);
+  margin-top: 1.25rem;
+  font-size: 0.95rem;
 }
-/* HERO split layout */
+.kpi span {
+  border: 1px dashed var(--border);
+  padding: 0.4rem 0.6rem;
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* Layout split */
 .hero-split {
   display: grid;
   grid-template-columns: 1fr;
@@ -383,88 +383,43 @@ html, body {
   align-items: center;
 }
 
-.hero-copy {
-  order: 1; /* text sus pe mobil */
-}
-
-.hero-media {
-  order: 2; /* carusel jos pe mobil */
-}
+.hero-copy { order: 1; }
+.hero-media { order: 2; }
 
 @media (min-width: 900px) {
   .hero-split {
-    grid-template-columns: 1.05fr 0.95fr; /* media stânga, text dreapta */
+    grid-template-columns: 1.05fr 0.95fr;
     gap: 2rem;
   }
 
-  .hero-media {
-    order: 1; /* stânga pe desktop */
+  .hero-media { order: 1; }
+  .hero-copy  { order: 2; }
+}
+
+/* Mobile polish */
+@media (max-width: 520px) {
+  .hero-cta {
+    display: grid;
+    gap: 10px;
   }
-
-  .hero-copy {
-    order: 2; /* dreapta pe desktop */
-  }
+  .hero-cta .btn { width: 100%; }
 }
 
-/* Dust/Sand dissolve carousel */
-/* =========================
-   HERO LAYOUT
-========================= */
-.hero { padding: 48px 0; }
 
-.hero-split{
-  display:grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap:28px;
-  align-items:center;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 11px 14px;
-  border-radius: 12px;
-  border: 1px solid var(--border, rgba(255,255,255,0.12));
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.btn-primary {
-  background: rgba(14,165,233,0.18);
-  color: var(--text, #fff);
-}
-
-.btn-ghost {
-  background: transparent;
-  color: var(--text, #fff);
-}
-
-.badge {
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid var(--border, rgba(255,255,255,0.12));
-  color: var(--muted, rgba(255,255,255,0.78));
-  background: rgba(255,255,255,0.04);
-}
-
-/* =========================
-   CAROUSEL (fără dust)
-========================= */
+/* =========================================================
+   6) HERO CAROUSEL (fără dust layers)
+   - Ai zis: a rămas doar cel de sus, fără overlay tiles
+========================================================= */
 
 .dust-wrap {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--border, rgba(255,255,255,0.12));
+
+  border: 1px solid var(--border);
   background: rgba(14,165,233,0.06);
   box-shadow: 0 10px 30px rgba(0,0,0,0.22);
-  height: 340px;
-}
 
-.carousel-wrap {
-  position: relative;
+  height: 340px;
 }
 
 .dust-slide {
@@ -476,27 +431,18 @@ html, body {
   filter: saturate(1.05);
 }
 
-/* back stă dedesubt */
-.dust-slide--back {
-  z-index: 0;
-}
+.dust-slide--back { z-index: 0; }
 
-/* front e deasupra și își schimbă opacity */
 .dust-slide--front {
   z-index: 1;
-  transition-property: opacity;
-  transition-timing-function: ease;
+  transition: opacity 380ms ease;
 }
 
-/* dacă vrei și mai smooth: respectă reduce motion */
 @media (prefers-reduced-motion: reduce) {
-  .dust-slide--front {
-    transition-duration: 0ms !important;
-  }
+  .dust-slide--front { transition-duration: 0ms !important; }
 }
 
-
-/* Mobil: mai scund pe verticală (doar dacă TU setezi height din CSS, nu din prop) */
+/* Mobile carousel height */
 @media (max-width: 768px) {
   .dust-wrap {
     height: 28vh;
@@ -505,208 +451,166 @@ html, body {
   }
 }
 
-/* Safety: dacă ai rămas cu markup vechi, îl ascundem complet */
+/* Safety: dacă a rămas markup vechi */
 .dust-grid,
 .dust-overlay,
-.dust-tile {
-  display: none !important;
-}
+.dust-tile { display: none !important; }
 
-/* =========================
-   HERO (layout folosit în Home)
-   markup: .container.hero-split + .hero-copy + .hero-media
-========================= */
 
-.hero {
-  padding: 48px 0;
-}
+/* =========================================================
+   7) CARDS (fără linkuri)
+   - Card cu imagine stânga + text dreapta
+========================================================= */
 
-.hero-split {
+.card.card-media {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 48px;
-  align-items: center;
-}
-
-/* Desktop: carousel stânga, text dreapta */
-.hero-media { order: 1; }
-.hero-copy  { order: 2; }
-
-/* =========================
-   RESPONSIVE (Telefon)
-========================= */
-
-@media (max-width: 900px) {
-  .hero {
-    padding: 28px 0;
-  }
-
-  .hero-split {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  /* Mobile: text sus, carousel jos */
-  .hero-copy  { order: 1; }
-  .hero-media { order: 2; }
-}
-
-@media (max-width: 520px) {
-  .hero-cta {
-    display: grid;
-    gap: 10px;
-  }
-
-  .hero-cta .btn {
-    width: 100%;
-  }
-}
-
-/* =========================
-   CARD cu imagine stânga + text dreapta
-   Hover subtil + click (FĂRĂ overlap)
-========================= */
-
-.card.card-media{
-  display: grid;
-  grid-template-columns: minmax(160px, 240px) 1fr; /* ⬅️ în loc de 500px */
-  gap: 18px; /* puțin mai aerisit */
+  grid-template-columns: minmax(160px, 240px) 1fr;
+  gap: 18px;
   align-items: center;
   margin-bottom: 10px;
-  cursor: pointer;
 
-  will-change: transform;
-  transform: translateZ(0);
+  /* dacă nu mai sunt linkuri, cursor normal */
+  cursor: default;
 
-  transition:
-    transform 220ms cubic-bezier(.2,.8,.2,1),
-    box-shadow 220ms cubic-bezier(.2,.8,.2,1),
-    background-color 220ms ease;
-}
-.card.card-media{
-  grid-template-columns: auto 1fr;
+  transition: transform 220ms cubic-bezier(.2,.8,.2,1),
+              box-shadow 220ms cubic-bezier(.2,.8,.2,1);
 }
 
-
-.card.card-media:hover,
-.card.card-media:focus-within {
+.card.card-media:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 26px rgba(0,0,0,0.18);
-  background-color: rgba(255,255,255,0.02);
 }
-
-.card.card-media:active {
-  transform: translateY(0);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.16);
-}
-
-/* =========================
-   IMAGINE (FIXED BOX)
-========================= */
-
 
 .card-media-img {
-  width: 100%;              /* ⬅️ NU fix */
-  max-width: 300px;         /* limită sigură */
+  width: 100%;
+  max-width: 300px;
   aspect-ratio: 4 / 3;
   overflow: hidden;
   border-radius: 10px;
 }
 
-/* DOAR imaginea se scalează, NU containerul */
 .card-media-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-
   transition: transform 320ms cubic-bezier(.2,.8,.2,1);
 }
 
-/* hover subtil, fără overlap */
 .card.card-media:hover .card-media-img img {
   transform: scale(1.08);
 }
 
-/* =========================
-   TEXT
-========================= */
+.card-media-text { min-width: 0; }
+.card-media-text h3 { margin: 0 0 6px; }
+.card-media-text .small { margin: 0; opacity: 0.85; }
 
-.card-media-text {
-  min-width: 0; /* 🔴 important pt. grid */
-}
-
-.card-media-text h3 {
-  margin: 0 0 6px;
-}
-
-.card-media-text .small {
-  margin: 0;
-  opacity: 0.85;
-}
-
-/* =========================
-   RESPONSIVE (Telefon)
-========================= */
-
+/* Telefon: card vertical */
 @media (max-width: 520px) {
   .card.card-media {
-    grid-template-columns: 72px 1fr;
+    grid-template-columns: 1fr;
     gap: 12px;
-    padding: 4px;
+    padding: 12px;
   }
-
   .card-media-img {
-    width: 72px;
-    height: 72px;
+    max-width: 100%;
   }
 }
 
-
-.header-mail a {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-
-  font-size: 16px;
-  font-weight: 500;
-  color: var(--text, #fff);
-  text-decoration: none;
-
-  opacity: 0.9;
-  transition: opacity 160ms ease, transform 160ms ease;
-}
-
-.header-mail a:hover {
-  opacity: 1;
-  transform: translateY(-1px);
-}
-
-.mail-icon {
-  font-size: 25px;
-  line-height: 1;
-}
-
-.mail-text {
-  white-space: nowrap;
-}
+/* =========================================================
+   8) SMALL RESPONSIVE FIXES
+========================================================= */
 
 @media (max-width: 600px) {
-  .mail-text {
-    display: none;
+  .hero-cta {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  text-decoration: none;
-  color: inherit;
+/* Dacă ai butoane în grid pe mobil și vrei 75% lățime, păstrează asta.
+   Dacă nu-ți place, șterge blocul. */
+@media (max-width: 600px) {
+  .btn { width: 75%; }
 }
 
-.brand-logo {
-  width: 44px;
-  height: 44px;
-  object-fit: contain;
+/* =========================
+   HERO CU BACKGROUND IMAGE
+========================= */
+
+.hero-bg {
+  position: relative;
+  min-height: 55vh;          /* ajustabil */
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 16px;
+}
+/* IMAGINEA – NU SE TAIE */
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;       /* 🔥 cheia */
+  object-position: center;
+}
+/* overlay pentru lizibilitate */
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+ background: transparent;   /* <- NU mai întunecă */
+  display: none;  
+}
+
+/* conținutul (textul) */
+.hero-bg-content {
+  transform: translateY(40px); /* + / - după gust */
+  position: relative;
+  text-align: center;
+  max-width: 720px;
+}
+
+/* TITLU – mai mic, elegant */
+.hero-bg h1 {
+  color: #5602A2;
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+  line-height: 1.2;
+  margin: 0 ;
+  font-weight: 800;
+}
+
+/* PARAGRAF – discret */
+.hero-bg p {
+  font-size: 1rem;
+  line-height: 1.55;
+  margin: 0;
+ color: #888b94;
+}
+
+/* FORCE RESET – HERO BACKGROUND IMAGE TEXT */
+.hero-bg h1,
+.hero-bg p {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  
+}
+
+
+/* =========================
+   RESPONSIVE (mobil)
+========================= */
+
+@media (max-width: 600px) {
+  .hero-bg {
+    min-height: 50vh;
+    padding: 2rem 0;
+  }
+
+  .hero-bg p {
+    font-size: 1rem;
+  }
 }
