@@ -50,7 +50,7 @@ export default function Header() {
 
     {/* Desktop nav */}
     <nav className="desktop-nav">
-      
+      <NavLink to="/" style={linkStyle}>Home</NavLink>
       <NavLink to="/praxis" style={linkStyle}>Praxis</NavLink>
       <NavLink to="/uberuns" style={linkStyle}>UberUns</NavLink>
       <NavLink to="/kontakt" className="btn">Angebot</NavLink>
@@ -65,6 +65,10 @@ export default function Header() {
     aria-hidden={!open}
   >
     <div className="container mobile-links">
+      <NavLink to="/" style={linkStyle} onClick={() => setOpen(false)}>
+        Home
+      </NavLink>
+
       <NavLink to="/kontakt" style={linkStyle} onClick={() => setOpen(false)}>
         Kontakt
       </NavLink>

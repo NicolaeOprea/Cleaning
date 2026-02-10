@@ -2,6 +2,11 @@
    0) THEME / GLOBAL RESET
    - Variabile, reset, layout de bază
 ========================================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
 :root {
   --primary: #0ea5e9;
@@ -14,11 +19,18 @@
   --border: #e2e8f0;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html, body {
+html,
+body {
   margin: 0;
-  font-family: Inter, system-ui, -apple-system, sans-serif;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    sans-serif;
   background: var(--bg);
   color: var(--text);
 
@@ -31,15 +43,22 @@ a {
   text-decoration: none;
   color: inherit;
 }
-
+p{
+  --primary-dark: #0284c7;
+  line-height: 2.05;
+  font-size: clamp(16px, 1.2vw, 20px);
+}
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
-.section { padding: 4rem 0; }
-
+.section {
+  padding: 4rem 0;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
 
 /* =========================================================
    1) UI BASICS
@@ -63,14 +82,18 @@ a {
   font-size: 14px;
 }
 
-.btn:hover { background: var(--primary-dark); }
+.btn:hover {
+  background: var(--primary-dark);
+}
 
 .btn.secondary {
   background: #fff;
   color: var(--text);
   border: 1px solid var(--border);
 }
-.btn.secondary:hover { border-color: var(--primary); }
+.btn.secondary:hover {
+  border-color: var(--primary);
+}
 
 .badge {
   display: inline-block;
@@ -80,6 +103,8 @@ a {
   font-size: 0.85rem;
   color: var(--muted);
   background: #fff;
+  margin-left: 180px;
+  margin-bottom: 20px;
 }
 
 .card {
@@ -100,7 +125,7 @@ a {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 0.85rem 1rem;
-  background: rgba(14,165,233,0.08);
+  background: rgba(14, 165, 233, 0.08);
 }
 
 .label {
@@ -110,7 +135,8 @@ a {
   display: block;
 }
 
-.input, .textarea {
+.input,
+.textarea {
   width: 100%;
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -122,20 +148,27 @@ a {
   resize: vertical;
 }
 
-
 /* =========================================================
    2) GRID HELPERS (dacă le folosești în pagini)
 ========================================================= */
 
-.grid { width: 100%; }
-
-.grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-
-@media (max-width: 900px) {
-  .grid-3, .grid-2 { grid-template-columns: 1fr; }
+.grid {
+  width: 100%;
 }
 
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+@media (max-width: 900px) {
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
 
 /* =========================================================
    3) HEADER + NAV
@@ -144,10 +177,12 @@ a {
 
 .site-header {
   position: fixed;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   z-index: 999;
 
-  background: rgba(255,255,255,0.92);
+  background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
@@ -207,17 +242,26 @@ a {
   color: var(--text);
   opacity: 0.9;
 
-  transition: opacity 160ms ease, transform 160ms ease;
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
 }
 .header-mail a:hover {
   opacity: 1;
   transform: translateY(-1px);
 }
-.mail-icon { font-size: 22px; line-height: 1; }
-.mail-text { white-space: nowrap; }
+.mail-icon {
+  font-size: 22px;
+  line-height: 1;
+}
+.mail-text {
+  white-space: nowrap;
+}
 
 @media (max-width: 600px) {
-  .mail-text { display: none; }
+  .mail-text {
+    display: none;
+  }
 }
 
 /* Mobile actions */
@@ -238,14 +282,22 @@ a {
   place-items: center;
   cursor: pointer;
 }
-.icon-btn:active { transform: scale(0.98); }
+.icon-btn:active {
+  transform: scale(0.98);
+}
 
 /* Desktop nav (hidden mobile) */
-.desktop-nav { display: none; }
+.desktop-nav {
+  display: none;
+}
 
 @media (min-width: 900px) {
-  .header-row { height: 72px; }
-  .header-actions { display: none; }
+  .header-row {
+    height: 72px;
+  }
+  .header-actions {
+    display: none;
+  }
 
   .desktop-nav {
     display: flex;
@@ -270,8 +322,8 @@ a {
   pointer-events: none;
 
   transition:
-    max-height 560ms cubic-bezier(.2,.9,.2,1),
-    transform 420ms cubic-bezier(.2,.9,.2,1),
+    max-height 560ms cubic-bezier(0.2, 0.9, 0.2, 1),
+    transform 420ms cubic-bezier(0.2, 0.9, 0.2, 1),
     opacity 240ms ease 80ms; /* mic delay = mai “fluid” */
 }
 
@@ -281,7 +333,6 @@ a {
   transform: translateY(0);
   pointer-events: auto;
 }
-
 
 .mobile-links {
   padding: 0.9rem 1rem 1.1rem;
@@ -298,12 +349,14 @@ a {
   padding: 12px 8px;
   border-radius: 12px;
 
-  transition: background-color 160ms ease, transform 160ms ease;
+  transition:
+    background-color 160ms ease,
+    transform 160ms ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 .mobile-panel .mobile-links a:not(.btn):hover {
-  background: rgba(0,0,0,0.04);
+  background: rgba(0, 0, 0, 0.04);
   transform: translateX(-1px);
 }
 
@@ -316,14 +369,25 @@ a {
 }
 
 @keyframes hint-left {
-  0%   { transform: translateX(0); opacity: 0.6; }
-  50%  { transform: translateX(-6px); opacity: 1; }
-  100% { transform: translateX(0); opacity: 0.6; }
+  0% {
+    transform: translateX(0);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateX(-6px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 0.6;
+  }
 }
 
 /* butoanele NU primesc icon */
-.mobile-panel .mobile-links .btn::after { content: none; animation: none; }
-
+.mobile-panel .mobile-links .btn::after {
+  content: none;
+  animation: none;
+}
 
 /* =========================================================
    5) HERO SECTION
@@ -331,15 +395,11 @@ a {
 ========================================================= */
 
 .hero {
-  background: linear-gradient(
-    180deg,
-    rgba(14,165,233,0.10),
-    rgba(255,255,255,0)
-  );
-  border-bottom: 1px solid var(--border);
-  margin-top: 30px;
+  margin-top: 4rem; /* nu mai împinge aiurea */
+  border-bottom: none; /* nu mai tăia hero-ul */
+  background: transparent;
+  padding: 0;
 }
-
 
 .hero h1 {
   font-size: clamp(2rem, 4vw, 3rem);
@@ -366,7 +426,8 @@ a {
   flex-wrap: wrap;
   color: var(--muted);
   margin-top: 1.25rem;
-  font-size: 0.95rem;
+  font-size: 1rem;
+  margin-left: 180px;
 }
 .kpi span {
   border: 1px dashed var(--border);
@@ -383,8 +444,12 @@ a {
   align-items: center;
 }
 
-.hero-copy { order: 1; }
-.hero-media { order: 2; }
+.hero-copy {
+  order: 1;
+}
+.hero-media {
+  order: 2;
+}
 
 @media (min-width: 900px) {
   .hero-split {
@@ -392,8 +457,12 @@ a {
     gap: 2rem;
   }
 
-  .hero-media { order: 1; }
-  .hero-copy  { order: 2; }
+  .hero-media {
+    order: 1;
+  }
+  .hero-copy {
+    order: 2;
+  }
 }
 
 /* Mobile polish */
@@ -402,59 +471,15 @@ a {
     display: grid;
     gap: 10px;
   }
-  .hero-cta .btn { width: 100%; }
-}
-
-
-/* =========================================================
-   6) HERO CAROUSEL (fără dust layers)
-   - Ai zis: a rămas doar cel de sus, fără overlay tiles
-========================================================= */
-
-.dust-wrap {
-  position: relative;
-  overflow: hidden;
-
-  border: 1px solid var(--border);
-  background: rgba(14,165,233,0.06);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.22);
-
-  height: 340px;
-}
-
-.dust-slide {
-  position: absolute;
-  inset: 0;
-  background-size: cover;
-  background-position: center;
-  transform: translateZ(0) scale(1.02);
-  filter: saturate(1.05);
-}
-
-.dust-slide--back { z-index: 0; }
-
-.dust-slide--front {
-  z-index: 1;
-  transition: opacity 380ms ease;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .dust-slide--front { transition-duration: 0ms !important; }
-}
-
-/* Mobile carousel height */
-@media (max-width: 768px) {
-  .dust-wrap {
-    height: 28vh;
-    min-height: 200px;
-    border-radius: 10px;
+  .hero-cta .btn {
+    width: 100%;
+  }
+  .kpi {
+    margin-left: 20px;
   }
 }
 
-/* Safety: dacă a rămas markup vechi */
-.dust-grid,
-.dust-overlay,
-.dust-tile { display: none !important; }
+
 
 
 /* =========================================================
@@ -464,7 +489,7 @@ a {
 
 .card.card-media {
   display: grid;
-  grid-template-columns: minmax(160px, 240px) 1fr;
+  grid-template-columns: minmax(360px, 440px) 1fr;
   gap: 18px;
   align-items: center;
   margin-bottom: 10px;
@@ -472,13 +497,14 @@ a {
   /* dacă nu mai sunt linkuri, cursor normal */
   cursor: default;
 
-  transition: transform 220ms cubic-bezier(.2,.8,.2,1),
-              box-shadow 220ms cubic-bezier(.2,.8,.2,1);
+  transition:
+    transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .card.card-media:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(0,0,0,0.18);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
 }
 
 .card-media-img {
@@ -494,16 +520,23 @@ a {
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 320ms cubic-bezier(.2,.8,.2,1);
+  transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .card.card-media:hover .card-media-img img {
   transform: scale(1.08);
 }
 
-.card-media-text { min-width: 0; }
-.card-media-text h3 { margin: 0 0 6px; }
-.card-media-text .small { margin: 0; opacity: 0.85; }
+.card-media-text {
+  min-width: 0;
+}
+.card-media-text h3 {
+  margin: 0 0 6px;
+}
+.card-media-text .small {
+  margin: 0;
+  opacity: 0.85;
+}
 
 /* Telefon: card vertical */
 @media (max-width: 520px) {
@@ -517,100 +550,214 @@ a {
   }
 }
 
-/* =========================================================
-   8) SMALL RESPONSIVE FIXES
-========================================================= */
 
-@media (max-width: 600px) {
-  .hero-cta {
-    flex-direction: column;
-    align-items: stretch;
-  }
-}
 
-/* Dacă ai butoane în grid pe mobil și vrei 75% lățime, păstrează asta.
-   Dacă nu-ți place, șterge blocul. */
-@media (max-width: 600px) {
-  .btn { width: 75%; }
-}
 
 /* =========================
-   HERO CU BACKGROUND IMAGE
+   HERO – INDEPENDENT DE LAYOUT
 ========================= */
 
 .hero-bg {
   position: relative;
-  min-height: 55vh;          /* ajustabil */
-  display: grid;
-  place-items: center;
+
+  /* AICI AI CONTROL */
+  width: 70rem; /* micșorezi / mărești */
+  height: 40rem; /* ajustezi înălțimea */
+  margin-top: 10px;
+  
+  padding-top: 20px; /* MUTARE pe orizontală */
+  /* MUTARE pe verticală */
+
+  /* alternativ: margin: 40px auto; pentru centrare */
+
   overflow: hidden;
+  border-radius: 18px;
+
   background: #fff;
-  border-radius: 16px;
 }
-/* IMAGINEA – NU SE TAIE */
+
+/* TEXT – CONTROL TOTAL */
+.hero-bg-content {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  /* CHEIA 👇 */
+  align-items: flex-start; /* nu center */
+
+  padding-left: 12vw; /* ← mută tot spre dreapta */
+  padding-right: 4vw;
+
+  text-align: left;
+}
+
+/* text */
+.hero-bg-content h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 700;
+  color: #0f172a;
+  max-width: 900px;
+  text-align: center;
+}
+
+.hero-bg-content p {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #2d6bc1;
+  max-width: 820px;
+  text-align: center;
+}
 .hero-bg-img {
   position: absolute;
   inset: 0;
+
   width: 100%;
   height: 100%;
-  object-fit: contain;       /* 🔥 cheia */
-  object-position: center;
-}
-/* overlay pentru lizibilitate */
-.hero-bg::before {
-  content: "";
-  position: absolute;
-  inset: 0;
- background: transparent;   /* <- NU mai întunecă */
-  display: none;  
-}
 
-/* conținutul (textul) */
-.hero-bg-content {
-  transform: translateY(40px); /* + / - după gust */
-  position: relative;
-  text-align: center;
-  max-width: 720px;
-}
+  object-fit: contain; /* 🔥 VEZI TOATĂ IMAGINEA */
+  object-position: center; /* centru real */
 
-/* TITLU – mai mic, elegant */
-.hero-bg h1 {
-  color: #5602A2;
-  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
-  line-height: 1.2;
-  margin: 0 ;
-  font-weight: 800;
-}
-
-/* PARAGRAF – discret */
-.hero-bg p {
-  font-size: 1rem;
-  line-height: 1.55;
   margin: 0;
- color: #888b94;
+  padding: 0;
 }
 
-/* FORCE RESET – HERO BACKGROUND IMAGE TEXT */
-.hero-bg h1,
-.hero-bg p {
-  background: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
-  
+/* BUTON – dreapta jos */
+.hero-btn {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  z-index: 3;
 }
 
+.small{
+  margin-top: 20px;
+  color: var(--primary-dark);
+}
 
-/* =========================
-   RESPONSIVE (mobil)
-========================= */
-
-@media (max-width: 600px) {
-  .hero-bg {
-    min-height: 50vh;
-    padding: 2rem 0;
+/* -------------------------
+   <= 900px (tableta / laptop mic)
+------------------------- */
+@media (max-width: 900px) {
+  .hero {
+    margin-top: 3.2rem; /* mai mic decat 4rem */
   }
 
-  .hero-bg p {
+  .hero-bg {
+    width: 100%;
+    height: 34rem;
+    border-radius: 16px;
+  }
+
+  .hero-bg-content {
+    padding-inline: 1.5rem;
+  }
+
+  .badge {
+    margin-left: 20px; /* NU mai impinge in dreapta */
+  }
+
+  .kpi {
+    margin-left: 20px;
+  }
+}
+
+/* -------------------------
+   <= 700px (telefon mare / tableta mica)
+------------------------- */
+@media (max-width: 700px) {
+  .container {
+    padding: 0 0.9rem;
+  }
+
+  .hero-bg {
+    height: 28rem;
+    padding-top: 0; /* nu mai “umfla” scena */
+    border-radius: 14px;
+  }
+
+  .hero-bg-content h1 {
+    font-size: clamp(1.7rem, 5vw, 2.4rem);
+    max-width: 26ch; /* tinde spre 2 randuri, fara sa forteze 4 */
+  }
+
+  .hero-bg-content p {
     font-size: 1rem;
+    max-width: 40ch;
+  }
+
+  /* buton mai ok pe ecrane mici */
+  .hero-btn {
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .btn {
+    padding: 0.7rem 1rem;
+  }
+}
+
+/* -------------------------
+   <= 500px (telefon mic)
+------------------------- */
+@media (max-width: 500px) {
+  .header-row {
+    height: 56px; /* ramane compact */
+  }
+
+  .hero {
+    margin-top: 2.6rem;
+  }
+
+  .hero-bg {
+    width: 100%;
+    height: 100vh;       /* 🔥 FULLSCREEN */
+    max-height: none;
+    border-radius: 0;    /* full edge */
+    margin-top: 0;
+  }
+
+   .hero-bg-img {
+    object-fit: cover;        /* umple ecranul */
+    object-position: center;  /* corect pe mobil */
+  }
+
+  .hero-bg-content {
+    justify-content: center;
+    align-items: center;
+    gap: 14px; /* spațiere naturală */
+  }
+
+  .hero-bg-content h1 {
+    font-size: 1.55rem;
+    max-width: 24ch;
+  }
+
+  .hero-bg-content p {
+    font-size: 0.95rem;
+    max-width: 38ch;
+  }
+
+   .hero-btn {
+    position: static;     /* 🔥 intră între h1 și p */
+    transform: none;
+    width: auto;
+    min-width: 220px;
+  }
+
+  .badge{
+    margin-left: 20px;
+  }
+  /* scoatem marimile “mari” pe mobil */
+  .kpi {
+    font-size: 0.95rem;
+    margin-left: 20px;
+  }
+  .small{
+    margin-top: 20px;
   }
 }

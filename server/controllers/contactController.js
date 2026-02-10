@@ -1,5 +1,4 @@
-import nodemailer from "nodemailer";
-import { createTransport, renderCompanyEmail, renderClientConfirmEmail } from "../services/mailer.js";
+
 
 export const sendContact = async (req, res) => {
   try {
@@ -11,11 +10,11 @@ export const sendContact = async (req, res) => {
 
     const transporter = await createTransport();
 
-    const toCompany = process.env.COMPANY_INBOX || "kontakt@abbas-service.de";
+    const toCompany = process.env.COMPANY_INBOX || "Kontakt@hosseinireinigugsservice.de";
 
     // 1) email către firmă
     const infoCompany = await transporter.sendMail({
-      from: process.env.MAIL_FROM || "ABBAS Website <no-reply@abbas-service.de>",
+      from: process.env.MAIL_FROM || "HOSSEINI Website <no-reply@hosseinireinigugsservice.de>",
       to: toCompany,
       replyTo: email,
       subject: `Neue Anfrage: ${name}`,

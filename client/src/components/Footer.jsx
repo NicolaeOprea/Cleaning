@@ -8,6 +8,8 @@ export default function Footer() {
         <div style={{ display: "flex", gap: "1rem" }}>
           <Link to="/impressum">Impressum</Link>
           <Link to="/datenschutz">Datenschutz</Link>
+          <Link to="">Mobil: 0176 12345678</Link>
+          <Link to="">Email: Kontakt@hosseinireinigugsservice</Link>
         </div>
       </div>
     </footer>

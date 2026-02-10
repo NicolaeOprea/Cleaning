@@ -53,7 +53,7 @@ export default function Kontakt() {
           <h3>Kontaktinformationen</h3>
           <p className="small">
             Telefon: <a href="tel:+4917600000000">+49 176 00000000</a><br />
-            Email: <a href="mailto:kontakt@abbas-service.de">kontakt@abbas-service.de</a>
+            Email: <a href="mailto:kontakt@hosseinireinigugsservice.de">Kontakt@hosseinireinigugsservice.de</a>
           </p>
           <div className="alert">
             <b>Hinweis:</b> Winterdienst ist aktuell auf Anfrage / in Vorbereitung.
