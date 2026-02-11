@@ -5,7 +5,7 @@ import garten1 from "../assets/start/garten-1.jpg";
 import fenster1 from "../assets/start/fenster-1.jpg";
 import praxis1 from "../assets/start/praxis-1.jpg";
 import treppe1 from "../assets/start/treppe-1.jpg";
-import heroImg from "../assets/start/hosseini.jpeg";
+import heroImg from "../assets/start/hose-back.png";
 import road from "../assets/start/road.jpg";
 import winter from "../assets/start/winter1.jpg";
 import hausmeister from "../assets/start/hausmeister1.jpg";
@@ -24,10 +24,7 @@ export default function Home() {
               <img src={heroImg} alt="" className="hero-bg-img" />
 
               <div className="hero-bg-content  ">
-                <h1>
-                  Hosseini Reinigungsservice: Strahlende Sauberkeit für Ihr
-                  Objekt!
-                </h1>
+               
 
                 <Link className="btn hero-btn" to="/kontakt">
                   Kostenloses Angebot
@@ -37,6 +34,10 @@ export default function Home() {
                   Qualität, die man sieht – Service, den man spürt. Vereinbaren
                   Sie heute noch Ihr kostenloses Beratungsgespräch!
                 </p>
+                 <h1>
+                  Hosseini Reinigungsservice: Strahlende Sauberkeit für Ihr
+                  Objekt!
+                </h1>
               </div>
             </section>
           </div>

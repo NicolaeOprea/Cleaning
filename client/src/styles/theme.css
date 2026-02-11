@@ -581,10 +581,10 @@ p{
   position: absolute;
   inset: 0;
   z-index: 2;
-
+  margin-top: 420px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
 
   /* CHEIA 👇 */
   align-items: flex-start; /* nu center */
@@ -598,7 +598,7 @@ p{
 /* text */
 .hero-bg-content h1 {
   margin: 0 0 12px;
-  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
   font-weight: 700;
   color: #0f172a;
   max-width: 900px;
@@ -642,7 +642,7 @@ p{
 /* -------------------------
    <= 900px (tableta / laptop mic)
 ------------------------- */
-@media (max-width: 900px) {
+@media (min-width: 501px) and (max-width: 700px) {
   .hero {
     margin-top: 3.2rem; /* mai mic decat 4rem */
   }
@@ -655,6 +655,7 @@ p{
 
   .hero-bg-content {
     padding-inline: 1.5rem;
+    margin-top: 320px;
   }
 
   .badge {
@@ -669,7 +670,7 @@ p{
 /* -------------------------
    <= 700px (telefon mare / tableta mica)
 ------------------------- */
-@media (max-width: 700px) {
+@media (min-width: 701px) and (max-width: 900px) {
   .container {
     padding: 0 0.9rem;
   }
@@ -689,12 +690,11 @@ p{
     font-size: 1rem;
     max-width: 40ch;
   }
-
-  /* buton mai ok pe ecrane mici */
-  .hero-btn {
-    right: 16px;
-    bottom: 16px;
+.hero-bg-content  {
+    margin-top: 200px;
   }
+  /* buton mai ok pe ecrane mici */
+
 
   .btn {
     padding: 0.7rem 1rem;
@@ -730,6 +730,7 @@ p{
     justify-content: center;
     align-items: center;
     gap: 14px; /* spațiere naturală */
+    margin-top: 200px; /* ajustezi 60–120px */
   }
 
   .hero-bg-content h1 {
@@ -747,6 +748,7 @@ p{
     transform: none;
     width: auto;
     min-width: 220px;
+    margin-bottom: 120px;
   }
 
   .badge{
