@@ -729,13 +729,14 @@ p{
   .hero-bg-content {
     justify-content: center;
     align-items: center;
-    gap: 14px; /* spațiere naturală */
-    margin-top: 200px; /* ajustezi 60–120px */
+    gap: 12px; /* spațiere naturală */
+    margin-top: 230px; /* ajustezi 60–120px */
   }
 
   .hero-bg-content h1 {
     font-size: 1.55rem;
     max-width: 24ch;
+    
   }
 
   .hero-bg-content p {
@@ -761,5 +762,136 @@ p{
   }
   .small{
     margin-top: 20px;
+  }
+}
+/* =========================
+   ÜBER UNS SPLIT HERO
+========================= */
+
+/* header-ul tău are 56px pe mobil / 72px pe desktop */
+:root {
+  --header-h-mobile: 56px;
+  --header-h-desktop: 72px;
+}
+
+/* ca hero-ul să nu intre sub navbar */
+.about-hero-split,
+.about-hero-mobile {
+  padding-top: var(--header-h-mobile);
+}
+
+@media (min-width: 900px) {
+  .about-hero-split,
+  .about-hero-mobile {
+    padding-top: var(--header-h-desktop);
+  }
+}
+
+/* implicit: MOBILE view */
+.about-hero-split { display: none; }
+.about-hero-mobile { display: block; }
+
+.about-img {
+  width: 100%;
+  height: 75vh;                 /* desktop split height */
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* MOBILE HERO image */
+.about-img-mobile {
+  width: 100%;
+  height: 52vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 50% 15%; /* focus sus - ca să nu taie capul */
+}
+
+/* DESKTOP split */
+@media (min-width: 900px) {
+  .about-hero-mobile { display: none; }
+
+  .about-hero-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+  }
+
+  /* firma (stânga) */
+  .about-img.left {
+    height: 75vh;
+    background-position: 50% 18%;
+    border-right: 1px solid var(--border);
+  }
+
+  /* logo (dreapta) – să nu fie tăiat */
+  .about-img.right {
+    height: 75vh;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #ffffff;
+  }
+}
+
+/* Ajustare fină pe ecrane mici */
+@media (max-width: 600px) {
+  .about-img-mobile {
+    height: 48vh;
+    background-position: 50% 12%;
+  }
+}
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  border-top: 1px solid var(--border);
+  margin-top: 4rem;
+  padding: 2rem 0;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.footer-links a {
+  color: var(--muted);
+}
+
+.footer-copy {
+  white-space: nowrap;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .footer-inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+
+  .footer-copy {
+    margin-top: 0.5rem;
   }
 }
