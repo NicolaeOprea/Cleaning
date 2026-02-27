@@ -23,7 +23,7 @@ export const sendContact = async (req, res) => {
 
     // 2) confirmare către client
     const infoClient = await transporter.sendMail({
-      from: process.env.MAIL_FROM || "ABBAS <no-reply@abbas-service.de>",
+      from: process.env.MAIL_FROM || "HOSSEINI Website <no-reply@hosseinireinigugsservice.de>",
       to: email,
       subject: "Wir haben Ihre Anfrage erhalten",
       html: renderClientConfirmEmail({ name }),

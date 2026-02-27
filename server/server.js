@@ -8,7 +8,24 @@ dotenv.config();
 
 const app = express();
 
-app.use(cors({ origin: process.env.CLIENT_ORIGIN || "http://localhost:3000" }));
+import cors from "cors";
+
+const allowed = [
+  "http://localhost:3000",
+  "https://cleaning-front.onrender.com",
+];
+
+app.use(
+  cors({
+    origin: (origin, cb) => {
+      // origin poate fi undefined la curl/postman
+      if (!origin) return cb(null, true);
+      if (allowed.includes(origin)) return cb(null, true);
+      return cb(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.get("/api/health", (req, res) => res.json({ ok: true }));

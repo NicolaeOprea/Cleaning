@@ -1,0 +1,14 @@
+:root {
+  --primary: #0ea5e9;
+  --primary-dark: #0284c7;
+
+  --bg: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+
+  --border: #e2e8f0;
+
+  /* header heights (folosite la UberUns / About) */
+  --header-h-mobile: 56px;
+  --header-h-desktop: 72px;
+}

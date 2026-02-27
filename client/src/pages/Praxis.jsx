@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import praxis from "../assets/start/praxis-1.jpg"
 
 export default function Praxis() {
   return (
@@ -9,7 +10,22 @@ export default function Praxis() {
         Ideal für Arztpraxen, Zahnarzt, Physiotherapie, Therapie- und Gesundheitsbereiche.
         Reinigung außerhalb der Öffnungszeiten möglich.
       </p>
+<div className="card card-media">
+              <div className="card-media-img">
+                <img src={praxis} alt="Büroreinigung" />
+              </div>
 
+              <div className="card-media-text">
+                <h3>Praxisreinigung</h3>
+                <p className="small">
+                  Ein sauberes Arbeitsumfeld für mehr Produktivität. Wir
+                  reinigen Ihre Büroräume diskret und gründlich – ob täglich
+                  oder in festen Intervallen. So schaffen wir die Basis für ein
+                  konzentriertes Arbeiten und einen professionellen Eindruck bei
+                  Ihren Kunden.
+                </p>
+              </div>
+            </div>
       <div className="grid grid-2" style={{ marginTop: "1.5rem" }}>
         <div className="card">
           <h3>Unser Fokus</h3>
@@ -29,7 +45,7 @@ export default function Praxis() {
 
       <div className="hero-cta" style={{ marginTop: "1.5rem" }}>
         <Link className="btn" to="/kontakt">Praxis-Angebot anfordern</Link>
-        <Link className="btn secondary" to="/leistungen">Alle Leistungen</Link>
+        <Link className="btn secondary" to="/uberuns">Alle Leistungen</Link>
       </div>
     </main>
   );

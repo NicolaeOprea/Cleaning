@@ -1,0 +1,28 @@
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.section {
+  
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+.section h1{
+    margin-left: 20px;
+}
+.section p {
+    margin-left: 20px;
+}
+/* GRID HELPERS */
+.grid {
+  width: 100%;
+}
+
+.grid-3 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}

@@ -4,7 +4,7 @@ export default function Impressum() {
       <h1>Impressum</h1>
 
       <div className="card">
-        <p><b>ABBAS Gebäudereinigung & Hausmeisterservice</b></p>
+        <p><b>Hosseini Reinigungsservice</b></p>
         <p className="small">
 
 Angaben gemäß § 5 TMG

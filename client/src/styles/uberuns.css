@@ -1,0 +1,102 @@
+/* ca hero-ul să nu intre sub navbar */
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  padding-top: var(--header-h-mobile);
+}
+
+/* common for images */
+.about-img {
+ 
+  background-repeat: no-repeat;
+  background-size: 75% ;
+  border-radius: 10px;
+    overflow: hidden;
+}
+
+/* firm image: focus up */
+.about-img-left {
+  background-position: 50% 18%;
+}
+
+/* logo: să nu fie tăiat */
+.about-img-right {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+}
+.container h1{
+margin-top: 20px;
+}
+.section p {
+    margin-top: 20px;
+    color: var(--primary-dark);
+}
+/* MOBILE: ascunde logo */
+@media (max-width: 899px) {
+
+  /* container full width */
+  .about-hero {
+    padding-top: var(--header-h-mobile, 56px);
+    padding-left: 10;
+    padding-right: 10;
+    padding-bottom: 0;
+    margin-top: 10px;
+  }
+
+  /* ascunde logo */
+  .about-img-right {
+    display: none;
+  }
+
+  /* imaginea ocupa 85% din ecran */
+  .about-img-left {
+    border-radius: 10px; /* full edge look */
+    overflow: hidden;   /* 🔥 obligatoriu pentru background */
+    background-size: 82% auto; /* zoom in puțin pentru a umple mai bine */
+    background-repeat: no-repeat;
+    margin: 3px;
+    /* mută focus puțin mai jos ca să vezi corpul complet */
+    background-position: center 75%;
+  }
+
+}
+
+
+/* DESKTOP: 2 coloane + 75vh */
+@media (min-width: 900px) {
+  .about-hero {
+    grid-template-columns: 1fr 1fr;
+    padding-top: var(--header-h-desktop);
+  }
+
+  .about-img {
+    height: 75vh;
+  }
+
+  .about-img-left {
+    border-right: 1px solid var(--border);
+    background-position: 50% 18%;
+  }
+}
+
+/* extra: telefoane mici */
+@media (max-width: 600px) {
+  .about-img {
+    height: 48vh;
+    
+  }
+}
+
+/* content width */
+.about-content {
+  max-width: 900px;
+}
+
+.lead {
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
+}

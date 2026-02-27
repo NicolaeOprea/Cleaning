@@ -2,13 +2,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import Home from "./pages/Home";
+import Home from "./pages/Home.jsx";
 import Uberuns from "./pages/UberUns";
-import Praxis from "./pages/Praxis";
+import Praxis from "./pages/Praxis.jsx";
 
-import Kontakt from "./pages/Kontakt";
-import Impressum from "./pages/Impressum";
-import Datenschutz from "./pages/Datenschutz";
+import Kontakt from "./pages/Kontakt.jsx";
+import Impressum from "./pages/Impressum.jsx";
+import Datenschutz from "./pages/Datenschutz.jsx";
 
 
 export default function App() {

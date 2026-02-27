@@ -78,7 +78,7 @@ export default function Header() {
       </NavLink>
 
       {/* Dacă vrei “Über uns”, fă o rută clară, ex: /uber-uns */}
-      <NavLink to="/uber-uns" style={linkStyle} onClick={() => setOpen(false)}>
+      <NavLink to="/uberuns" style={linkStyle} onClick={() => setOpen(false)}>
         Über uns
       </NavLink>
 

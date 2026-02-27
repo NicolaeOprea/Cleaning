@@ -684,11 +684,13 @@ p{
   .hero-bg-content h1 {
     font-size: clamp(1.7rem, 5vw, 2.4rem);
     max-width: 26ch; /* tinde spre 2 randuri, fara sa forteze 4 */
+  
   }
 
   .hero-bg-content p {
     font-size: 1rem;
     max-width: 40ch;
+  
   }
 .hero-bg-content  {
     margin-top: 200px;
@@ -730,7 +732,7 @@ p{
     justify-content: center;
     align-items: center;
     gap: 12px; /* spațiere naturală */
-    margin-top: 230px; /* ajustezi 60–120px */
+    margin-top: 240px; /* ajustezi 60–120px */
   }
 
   .hero-bg-content h1 {
@@ -894,4 +896,85 @@ p{
   .footer-copy {
     margin-top: 0.5rem;
   }
+}
+/* =========================
+   ÜBER UNS HERO (one section)
+========================= */
+
+/* dacă nu ai deja variabilele astea (din header), adaugă-le o singură dată în fișier */
+:root {
+  --header-h-mobile: 56px;
+  --header-h-desktop: 72px;
+}
+
+/* container hero */
+.about-hero {
+  display: grid;
+  grid-template-columns: 1fr; /* mobil: 1 coloană */
+  width: 100%;
+  padding-top: var(--header-h-mobile); /* să nu fie acoperit de navbar */
+}
+
+/* common for both images */
+.about-img {
+  width: 100%;
+  height: 52vh; /* mobil */
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* firm image: focus up */
+.about-img-left {
+  background-position: 50% 18%;
+}
+
+/* logo: să nu fie tăiat */
+.about-img-right {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: #ffffff;
+}
+
+/* MOBILE: ascunde logo */
+@media (max-width: 899px) {
+  .about-img-right {
+    display: none;
+  }
+}
+
+/* DESKTOP: 2 coloane + 75vh */
+@media (min-width: 900px) {
+  .about-hero {
+    grid-template-columns: 1fr 1fr;
+    padding-top: var(--header-h-desktop);
+  }
+
+  .about-img {
+    height: 75vh;
+  }
+
+  .about-img-left {
+    border-right: 1px solid var(--border);
+    background-position: 50% 18%;
+  }
+}
+
+/* extra: telefoane mici */
+@media (max-width: 600px) {
+  .about-img {
+    height: 48vh;
+    background-position: 50% 14%;
+  }
+}
+
+/* content width */
+.about-content {
+  max-width: 900px;
+}
+
+.lead {
+  font-size: 1.05rem;
+  color: var(--muted);
+  margin-bottom: 1.2rem;
 }
