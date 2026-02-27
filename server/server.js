@@ -7,9 +7,12 @@ import contactRoutes from "./routes/contactRoutes.js";
 dotenv.config();
 
 const app = express();
+
+
+
 const allowed = [
   "http://localhost:3000",
-  "https://cleaning-front.onrender.com",
+  
 ];
 
 app.use(
