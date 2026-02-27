@@ -8,11 +8,11 @@ dotenv.config();
 
 const app = express();
 
-
+import cors from "cors";
 
 const allowed = [
   "http://localhost:3000",
-  
+  "https://cleaning-j8dx.onrender.com",
 ];
 
 app.use(
