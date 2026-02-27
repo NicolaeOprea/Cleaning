@@ -8,7 +8,6 @@ dotenv.config();
 
 const app = express();
 
-import cors from "cors";
 
 const allowed = [
   "http://localhost:3000",
