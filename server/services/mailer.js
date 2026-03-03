@@ -8,7 +8,7 @@ export const emailSender = async (email, subject, plainText, htmlText) => {
       to: email,
       from: {
         name: "Hosseini Reinigungsservice",
-        email: process.env.SEND_GRID_API_KEY,
+        email: process.env.SEND_GRID_EMAIL, // ✅ CORECT
       },
       subject,
       text: plainText,
@@ -16,9 +16,8 @@ export const emailSender = async (email, subject, plainText, htmlText) => {
     };
 
     const [response] = await sendGrid.send(message);
-console.log("SEND_GRID_API_KEY:", process.env.SEND_GRID_API_KEY);
-
     return response.statusCode === 202;
+
   } catch (err) {
     console.error("SendGrid error:", err?.response?.body || err.message);
     return false;
