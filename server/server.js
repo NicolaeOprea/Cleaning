@@ -7,26 +7,15 @@ import contactRoutes from "./routes/contactRoutes.js";
 dotenv.config();
 
 const app = express();
-
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 const allowed = [
   "http://localhost:3000",
   "https://cleaning-j8dx.onrender.com",
 ];
+app.use(cors());
 
-app.use(
-  cors({
-    origin: (origin, cb) => {
-      // origin poate fi undefined la curl/postman
-      if (!origin) return cb(null, true);
-      if (allowed.includes(origin)) return cb(null, true);
-      return cb(new Error("Not allowed by CORS"));
-    },
-    credentials: true,
-  })
-);
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 
 app.use("/api/contact", contactRoutes);
