@@ -12,6 +12,8 @@ export const sendContactEmails = async ({
 }) => {
   const FROM = process.env.SEND_GRID_FROM; // sender verificat
   const TO = process.env.SEND_GRID_TO;     // inbox firmă
+console.log("FROM:", process.env.SEND_GRID_FROM);
+console.log("TO:", process.env.SEND_GRID_TO);
 
   if (!FROM || !isEmail(FROM)) {
     console.error("SendGrid: invalid SEND_GRID_FROM:", FROM);
