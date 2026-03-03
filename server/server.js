@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const allowed = [
   "http://localhost:3000",
-  "https://cleaning-j8dx.onrender.com",
+  "https://cleaning-front.onrender.com",
 ];
 app.use(cors());
 
