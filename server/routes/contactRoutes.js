@@ -7,9 +7,12 @@ const router = express.Router();
 router.post("/", async (req, res) => {
   try {
     const { name, email, phone, message } = req.body || {};
-
+    const emailRegex = /^\S+@\S+\.\S+$/;
     if (!name || !email || !message) {
       return res.status(400).json({ message: "Missing required fields" });
+    }
+    if (!emailRegex.test(email)) {
+      return res.status(400).json({ message: "Invalid email format" });
     }
 
     const result = await sendContactEmails({ name, email, phone, message });
@@ -17,7 +20,9 @@ router.post("/", async (req, res) => {
     if (!result.ok) {
       return res.status(500).json({ message: "Email could not be sent" });
     }
-
+if (req.body.company) {
+  return res.status(400).json({ message: "Spam detected" });
+}
     return res.status(200).json({ ok: true });
   } catch (err) {
     console.error("CONTACT ERROR:", err);

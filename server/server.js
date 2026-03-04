@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
-
+import rateLimit from "express-rate-limit";
 import contactRoutes from "./routes/contactRoutes.js";
 
 dotenv.config();
@@ -19,6 +19,12 @@ app.use(cors());
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 
 app.use("/api/contact", contactRoutes);
+const contactLimiter = rateLimit({
+  windowMs: 60 * 1000,
+  max: 3,
+  message: "Too many requests. Please try again later."
+});
 
+app.use("/api/contact", contactLimiter);
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running: ${PORT}`));

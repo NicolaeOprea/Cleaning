@@ -27,7 +27,9 @@ console.log("TO:", process.env.SEND_GRID_TO);
     console.error("SendGrid: invalid client email:", email);
     return { ok: false, reason: "invalid_client_email" };
   }
-
+const cleanMessage = message
+  .replace(/<[^>]*>?/gm, "")
+  .replace(/\n/g, "<br>");
   const safePhone = phone?.trim() ? phone.trim() : "-";
   const safeMsg = String(message || "").trim();
 
@@ -50,7 +52,7 @@ ${safeMsg}
     <p><strong>Email:</strong> ${email}</p>
     <p><strong>Telefon:</strong> ${safePhone}</p>
     <p><strong>Nachricht:</strong></p>
-    <p>${safeMsg.replaceAll("\n", "<br/>")}</p>
+    <p>${cleanMessage}</p>
   `;
 
   // 2) Confirmare către client
