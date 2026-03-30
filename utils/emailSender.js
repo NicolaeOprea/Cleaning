@@ -12,14 +12,14 @@ const escapeHtml = (value) =>
 
 const userConfirmationTemplate = ({
   name = "Kunde",
-  logoUrl = "https://site-ul-tau.de/logo.png",
+  logoUrl = "https://curat.onrender.com/logo3.png",
 }) => `
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bestaetigung Ihrer Anfrage</title>
+  <title>Bestätigung Ihrer Anfrage</title>
 </head>
 <body style="margin:0; padding:0; background-color:#f4f4f4; font-family:Arial, Helvetica, sans-serif;">
   <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#f4f4f4; margin:0; padding:30px 0;">
@@ -32,7 +32,7 @@ const userConfirmationTemplate = ({
           <tr>
             <td style="padding:40px 35px 20px 35px;">
               <h1 style="margin:0 0 20px 0; font-size:26px; line-height:1.3; color:#1f2937;">
-                Vielen Dank fuer Ihre Nachricht
+                Vielen Dank für Ihre Nachricht
               </h1>
 
               <p style="margin:0 0 16px 0; font-size:15px; line-height:1.7; color:#374151;">
@@ -40,13 +40,13 @@ const userConfirmationTemplate = ({
               </p>
 
               <p style="margin:0 0 16px 0; font-size:15px; line-height:1.7; color:#374151;">
-                wir bestaetigen hiermit den Eingang Ihrer Anfrage. Vielen Dank, dass Sie sich an
+                wir bestätigen hiermit den Eingang Ihrer Anfrage. Vielen Dank, dass Sie sich an
                 <strong>Hosseini Reinigung &amp; Hausmeisterservice</strong> gewendet haben.
               </p>
 
               <p style="margin:0 0 16px 0; font-size:15px; line-height:1.7; color:#374151;">
-                Ihre Nachricht wurde erfolgreich an unser Team uebermittelt. Wir werden Ihr Anliegen
-                so schnell wie moeglich pruefen und uns zeitnah bei Ihnen melden.
+                Ihre Nachricht wurde erfolgreich an unser Team übermittelt. Wir werden Ihr Anliegen
+                so schnell wie möglich prüfen und uns zeitnah bei Ihnen melden.
               </p>
 
               <p style="margin:0 0 16px 0; font-size:15px; line-height:1.7; color:#374151;">
@@ -54,7 +54,7 @@ const userConfirmationTemplate = ({
               </p>
 
               <p style="margin:0 0 8px 0; font-size:15px; line-height:1.7; color:#374151;">
-                Mit freundlichen Gruessen
+                Mit freundlichen Grüßen
               </p>
 
               <p style="margin:0; font-size:15px; line-height:1.7; color:#374151;">
@@ -79,7 +79,7 @@ const userConfirmationTemplate = ({
               <p style="margin:0; font-size:13px; line-height:1.8; color:#6b7280;">
                 <strong style="color:#374151;">Hosseini Reinigung &amp; Hausmeisterservice</strong><br />
                 Musterstrasse 12<br />
-                80331 Muenchen<br />
+                80331 München<br />
                 Deutschland<br />
                 Telefon: +49 123 456789<br />
                 E-Mail: kontakt@hosseinireinigungsservice.de
@@ -99,7 +99,7 @@ export const sendContactEmails = async ({ name, email, phone, message }) => {
   const FROM = process.env.SENDGRID_FROM;
   const TO = process.env.SENDGRID_TO;
   const LOGO_URL =
-    process.env.SENDGRID_LOGO_URL || "http://localhost:3000/logo3.png";
+    process.env.SENDGRID_LOGO_URL ;
 
   if (!API_KEY) return { ok: false, reason: "missing_sendgrid_api_key" };
   if (!FROM || !isEmail(FROM)) return { ok: false, reason: "invalid_from" };
@@ -141,11 +141,11 @@ ${safeMsg}
   const textClient = `
 Hallo ${safeName},
 
-vielen Dank fuer Ihre Nachricht. Wir haben Ihre Anfrage erhalten und melden uns so schnell wie moeglich bei Ihnen.
+Vielen Dank für Ihre Nachricht. Wir haben Ihre Anfrage erhalten und melden uns so schnell wie moeglich bei Ihnen.
 
 Falls Ihre Anfrage dringend ist, koennen Sie uns auch direkt telefonisch kontaktieren.
 
-Mit freundlichen Gruessen
+Mit freundlichen Grüßen
 Ihr Team von Hosseini Reinigung & Hausmeisterservice
   `.trim();
 
@@ -162,7 +162,7 @@ Ihr Team von Hosseini Reinigung & Hausmeisterservice
     await sgMail.send({
       to: email,
       from: FROM,
-      subject: "Bestaetigung Ihrer Anfrage",
+      subject: "Bestätigung Ihrer Anfrage",
       html: htmlClient,
       text: textClient,
     });
