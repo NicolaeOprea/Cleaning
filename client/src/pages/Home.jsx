@@ -1,66 +1,99 @@
+﻿import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import HeroSlider from "../components/HeroSlider";
+import büro from "../assets/buro.webp";
+import garten1 from "../assets/garten.webp";
+import fenster1 from "../assets/fenster.webp";
+import praxis1 from "../assets/praxis.webp";
+import treppe1 from "../assets/treppen.webp";
 
-import buro1 from "../assets/start/buro-1.jpg";
-import garten1 from "../assets/start/garten-1.jpg";
-import fenster1 from "../assets/start/fenster-1.jpg";
-import praxis1 from "../assets/start/praxis-1.jpg";
-import treppe1 from "../assets/start/treppe-1.jpg";
-import heroImg from "../assets/start/hose-back.png";
-import winter from "../assets/start/winter1.jpg";
-import hausmeister from "../assets/start/hausmeister1.jpg";
-import inner from "../assets/start/inner1.jpg";
-import party from "../assets/start/party1.jpg";
+import winter from "../assets/winter.webp";
+import hausmeister from "../assets/hausmeister.webp";
+import gebeude from "../assets/gebeude.webp";
+import party from "../assets/party.webp";
+
 export default function Home() {
+  const [activeService, setActiveService] = useState(null);
+
+  useEffect(() => {
+    if (!activeService) return undefined;
+
+    const onKeyDown = (event) => {
+      if (event.key === "Escape") setActiveService(null);
+    };
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  }, [activeService]);
+
+  const onServiceClick = (event) => {
+    if (typeof window !== "undefined" && window.innerWidth <= 900) return;
+
+    const card = event.target.closest(".service-card");
+    if (!card) return;
+
+    const img = card.querySelector("img");
+    const title = card.querySelector("h3");
+    const desc = card.querySelector(".small");
+    if (!img || !title || !desc) return;
+
+    setActiveService({
+      image: img.getAttribute("src") || "",
+      alt: img.getAttribute("alt") || "",
+      title: title.textContent || "",
+      description: desc.textContent || "",
+    });
+  };
+
   return (
     <main>
       <section className="hero">
         <div className="container hero-split">
-          {/* TEXT (mobile -> sus) */}
           <div className="hero-copy">
-            
-
             <section className="hero-bg">
-              <img src={heroImg} alt="" className="hero-bg-img" />
+              
+             <HeroSlider />
 
-              <div className="hero-bg-content  ">
-               
-
+              <div className="hero-bg-content">
                 <Link className="btn hero-btn" to="/kontakt">
-                  Kostenloses Angebot
+                  Kostenlos Angebot
                 </Link>
-
-                <p>
-                  Qualität, die man sieht – Service, den man spürt. Vereinbaren
-                  Sie heute noch Ihr kostenloses Beratungsgespräch!
-                </p>
-                 <h1>
-                  Hosseini Reinigungsservice: Strahlende Sauberkeit für Ihr
-                  Objekt!
-                </h1>
               </div>
             </section>
           </div>
         </div>
       </section>
+
       <div className="kpi">
-        <span>✅ Feste Pläne</span>
+        <span>✅ Feste Plane</span>
         <span>✅ Diskret (Praxis)</span>
         <span>✅ Persönlicher Service</span>
         <span>✅ Flexible Zeiten</span>
       </div>
-      <section className="section">
-        <span className="badge">München + Umland • Umkreis ~40 km</span>
-        <div className="container">
-          <h2>Unsere Dienstleistungen für Sie</h2>
 
-          <div className="grid grid-3" style={{ marginTop: "1.25rem" }}>
-            <div className="card card-media">
-              <div className="card-media-img">
+      <section className="section">
+        <div className="container">
+          <h1>Professionelle Reinigung in München</h1>
+          <span className="badge">München + Umland • Umkreis ~40 km</span>
+          <h2>Unsere Dienstleistungen fur Sie</h2>
+
+          <div
+            className="grid grid-3 services-puzzle"
+            style={{ marginTop: "1.25rem" }}
+            onClick={onServiceClick}
+          >
+            <div className="card card-media service-card service-card-1">
+              <div className="card-media-img service-img service-img-1">
                 <img src={praxis1} alt="Praxisreinigung" />
               </div>
-
               <div className="card-media-text">
-                <h3>1. Praxisreinigung</h3>
+                <h3>Praxisreinigung</h3>
                 <p className="small">
                   Maximale Hygiene für Ihre Patienten. In Arztpraxen und
                   medizinischen Einrichtungen steht Sauberkeit an oberster
@@ -71,13 +104,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="card card-media">
-              <div className="card-media-img">
-                <img src={buro1} alt="Büroreinigung" />
+            <div className="card card-media service-card service-card-2">
+              <div className="card-media-img service-img service-img-2">
+                <img src={büro} alt="Büroreinigung" />
               </div>
-
               <div className="card-media-text">
-                <h3>2. Büroreinigung</h3>
+                <h3>Büroreinigung</h3>
                 <p className="small">
                   Ein sauberes Arbeitsumfeld für mehr Produktivität. Wir
                   reinigen Ihre Büroräume diskret und gründlich – ob täglich
@@ -88,13 +120,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="card card-media">
-              <div className="card-media-img">
-                <img src={fenster1} alt="Büroreinigung" />
+            <div className="card card-media service-card service-card-3">
+              <div className="card-media-img service-img service-img-3">
+                <img src={fenster1} alt="Glasreinigung" />
               </div>
-
               <div className="card-media-text">
-                <h3>3. Glasreinigung</h3>
+                <h3>Glasreinigung</h3>
                 <p className="small">
                   Klarer Durchblick ohne Streifen. Egal ob Schaufenster,
                   Wintergarten oder Glasfassaden: Wir befreien Ihre Glasflächen
@@ -105,13 +136,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="card card-media">
-              <div className="card-media-img">
+            <div className="card card-media service-card service-card-4">
+              <div className="card-media-img service-img service-img-4">
                 <img src={treppe1} alt="Treppenhausreinigung" />
               </div>
-
               <div className="card-media-text">
-                <h3>4. Treppenhausreinigung</h3>
+                <h3>Treppenhausreinigung</h3>
                 <p className="small">
                   Die Visitenkarte Ihres Hauses. Das Treppenhaus ist der erste
                   Bereich, den Bewohner und Gäste betreten. Wir sorgen für eine
@@ -122,13 +152,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="card card-media">
-              <div className="card-media-img">
-                <img src={inner} alt="Unterhaltsreinigung" />
+            <div className="card card-media service-card service-card-5">
+              <div className="card-media-img service-img service-img-5">
+                <img src={gebeude} alt="Unterhaltsreinigung" />
               </div>
-
               <div className="card-media-text">
-                <h3>5. Unterhaltsreinigung</h3>
+                <h3>Unterhaltsreinigung</h3>
                 <p className="small">
                   Regelmäßige Pflege für dauerhaften Werterhalt. Wir kümmern uns
                   um die kontinuierliche Sauberkeit Ihrer Räumlichkeiten. Nach
@@ -139,30 +168,28 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="card card-media">
-              <div className="card-media-img">
-                <img src={party} alt="Party- & Eventreinigung" />
+            <div className="card card-media service-card service-card-6">
+              <div className="card-media-img service-img service-img-6">
+                <img src={party} alt="Party- und Eventreinigung" />
               </div>
-
               <div className="card-media-text">
-                <h3>6. Party- & Eventreinigung</h3>
+                <h3>Party- & Eventreinigung</h3>
                 <p className="small">
                   Sauberkeit vor und nach dem Feiern. Genießen Sie Ihr Event,
                   wir kümmern uns um den Rest. Wir bereiten Ihre Location
                   perfekt vor und sorgen nach der Veranstaltung dafür, dass
                   alles schnell wieder in den ursprünglichen, sauberen Zustand
-                  versetzt wird..
+                  versetzt wird.
                 </p>
               </div>
             </div>
 
-            <div className="card card-media">
-              <div className="card-media-img">
+            <div className="card card-media service-card service-card-7">
+              <div className="card-media-img service-img service-img-7">
                 <img src={hausmeister} alt="Hausmeisterservice" />
               </div>
-
               <div className="card-media-text">
-                <h3>7. Hausmeisterservice</h3>
+                <h3>Hausmeisterservice</h3>
                 <p className="small">
                   Ihr Objekt in besten Händen. Wir übernehmen die Kontrolle und
                   kleinere Instandsetzungen an Ihrem Gebäude. Von der
@@ -172,13 +199,12 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="card card-media">
-              <div className="card-media-img">
+            <div className="card card-media service-card service-card-8">
+              <div className="card-media-img service-img service-img-8">
                 <img src={winter} alt="Winterdienst" />
               </div>
-
               <div className="card-media-text">
-                <h3>8. Winterdienst</h3>
+                <h3>Winterdienst</h3>
                 <p className="small">
                   Sicherheit bei Eis und Schnee. Wenn es glatt wird, sind wir
                   für Sie da. Wir räumen und streuen Gehwege, Einfahrten und
@@ -188,45 +214,18 @@ export default function Home() {
               </div>
             </div>
 
-            <div className="card card-media">
-              <div className="card-media-img">
+            <div className="card card-media service-card service-card-9">
+              <div className="card-media-img service-img service-img-9">
                 <img src={garten1} alt="Gartenarbeit" />
               </div>
-
               <div className="card-media-text">
-                <h3>9. Gartenarbeit</h3>
+                <h3>Gartenarbeit</h3>
                 <p className="small">
                   Grünanlagen, die begeistern. Ein gepflegter Garten wertet jede
                   Immobilie auf. Wir übernehmen das Rasenmähen, den
                   Heckenschnitt und die allgemeine Beetpflege, damit Ihre
                   Außenanlage zu jeder Jahreszeit top aussieht.
                 </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section
-        className="section"
-        style={{ background: "rgba(14,165,233,0.06)" }}
-      >
-        <div className="container">
-          <div className="grid grid-2" style={{ alignItems: "center" }}>
-            <div>
-              <h2>Praxisreinigung – diskret & hygienisch</h2>
-              <p className="small">
-                Reinigung außerhalb der Sprechzeiten möglich. Klare Abläufe,
-                feste Ansprechpartner, auf Wunsch kurze Checkliste /
-                Reinigungsprotokoll nach jedem Termin.
-              </p>
-              <div className="hero-cta" style={{ marginTop: "1rem" }}>
-                <Link className="btn" to="/praxis">
-                  Mehr zur Praxisreinigung
-                </Link>
-                <Link className="btn secondary" to="/kontakt">
-                  Praxis-Angebot
-                </Link>
               </div>
             </div>
           </div>
@@ -254,12 +253,39 @@ export default function Home() {
           </p>
 
           <div className="hero-cta" style={{ marginTop: "1rem" }}>
-            <Link className="btn" to="/kontakt">
+            <Link className="btn btn-kontact" to="/kontakt">
               Angebot anfordern
             </Link>
           </div>
         </div>
       </section>
+
+      {activeService && (
+        <div
+          className="service-modal-backdrop"
+          onClick={() => setActiveService(null)}
+        >
+          <div className="service-modal" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="service-modal-close"
+              type="button"
+              onClick={() => setActiveService(null)}
+              aria-label="Close"
+            >
+              X
+            </button>
+            <img
+              className="service-modal-img"
+              src={activeService.image}
+              alt={activeService.alt}
+            />
+            <div className="service-modal-content">
+              <h3>{activeService.title}</h3>
+              <p>{activeService.description}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

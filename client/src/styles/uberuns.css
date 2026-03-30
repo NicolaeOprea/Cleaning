@@ -1,102 +1,90 @@
-/* ca hero-ul să nu intre sub navbar */
-.about-hero {
+.about-page {
+  padding-top: 0;
+}
+
+.about-layout {
+  margin-top: var(--header-h-mobile);
   display: grid;
-  grid-template-columns: 1fr;
-  width: 100%;
-  padding-top: var(--header-h-mobile);
+  gap: 1.25rem;
 }
 
-/* common for images */
+.about-hero {
+  margin-top: 0;
+}
+
 .about-img {
- 
+  width: 100%;
+  height: 72vh;
+  min-height: 500px;
+  max-height: 900px;
+  border-radius: 18px;
+  overflow: hidden;
   background-repeat: no-repeat;
-  background-size: 75% ;
-  border-radius: 10px;
-    overflow: hidden;
+  background-size: cover;
+  background-position: center 18%;
+  background-color: #a97a52;
 }
 
-/* firm image: focus up */
-.about-img-left {
-  background-position: 50% 18%;
-}
-
-/* logo: să nu fie tăiat */
-.about-img-right {
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #ffffff;
-}
-.container h1{
-margin-top: 20px;
-}
-.section p {
-    margin-top: 20px;
-    color: var(--primary-dark);
-}
-/* MOBILE: ascunde logo */
-@media (max-width: 899px) {
-
-  /* container full width */
-  .about-hero {
-    padding-top: var(--header-h-mobile, 56px);
-    padding-left: 10;
-    padding-right: 10;
-    padding-bottom: 0;
-    margin-top: 10px;
-  }
-
-  /* ascunde logo */
-  .about-img-right {
-    display: none;
-  }
-
-  /* imaginea ocupa 85% din ecran */
-  .about-img-left {
-    border-radius: 10px; /* full edge look */
-    overflow: hidden;   /* 🔥 obligatoriu pentru background */
-    background-size: 82% auto; /* zoom in puțin pentru a umple mai bine */
-    background-repeat: no-repeat;
-    margin: 3px;
-    /* mută focus puțin mai jos ca să vezi corpul complet */
-    background-position: center 75%;
-  }
-
-}
-
-
-/* DESKTOP: 2 coloane + 75vh */
-@media (min-width: 900px) {
-  .about-hero {
-    grid-template-columns: 1fr 1fr;
-    padding-top: var(--header-h-desktop);
-  }
-
-  .about-img {
-    height: 75vh;
-  }
-
-  .about-img-left {
-    border-right: 1px solid var(--border);
-    background-position: 50% 18%;
-  }
-}
-
-/* extra: telefoane mici */
-@media (max-width: 600px) {
-  .about-img {
-    height: 48vh;
-    
-  }
-}
-
-/* content width */
 .about-content {
-  max-width: 900px;
+  min-width: 0;
+  max-width: none;
+}
+
+.about-content h1,
+.about-content h3,
+.about-content p {
+  margin-left: 0;
+  text-align: left;
+}
+
+.about-content h1 {
+  margin-top: 20px;
+}
+
+.about-content p {
+  margin-top: 20px;
+  color: var(--primary-dark);
 }
 
 .lead {
   font-size: 1.05rem;
   color: var(--muted);
   margin-bottom: 1.2rem;
+}
+
+@media (min-width: 900px) {
+  .about-layout {
+    margin-top: var(--header-h-desktop);
+    grid-template-columns: 0.9fr 1.1fr;
+    align-items: start;
+    gap: 1.5rem;
+  }
+
+  .about-hero {
+    margin-left: -2rem;
+    margin-top: 10px;
+  }
+
+  .about-img {
+    height: calc(90vh - 15px);
+    min-height: 620px;
+    max-height: 980px;
+  }
+
+  .about-content {
+    margin-left: 40px;
+    margin-top: 40px;
+  }
+}
+
+@media (max-width: 700px) {
+  .about-hero {
+    margin-top: 10px;
+  }
+
+  .about-img {
+    height: 60vh;
+    min-height: 420px;
+    background-position: center 75%;
+  }
 }

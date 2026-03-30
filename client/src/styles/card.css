@@ -1,51 +1,278 @@
-.card.card-media {
+.services-puzzle {
   display: grid;
-  grid-template-columns: minmax(360px, 440px) 1fr;
-  gap: 18px;
-  align-items: center;
-  margin-bottom: 10px;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 14px;
+}
 
-  cursor: default;
+@media (min-width: 901px) {
+  .grid.grid-3.services-puzzle {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr)) !important;
+    grid-auto-rows: 72px;
+    gap: 14px;
+  }
 
+  .services-puzzle .service-card-1 {
+    grid-column: 1 / 8;
+    grid-row: span 5;
+  }
+
+  .services-puzzle .service-card-2 {
+    grid-column: 8 / 13;
+    grid-row: span 3;
+  }
+
+  .services-puzzle .service-card-3 {
+    grid-column: 8 / 13;
+    grid-row: span 2;
+  }
+
+  .services-puzzle .service-card-4 {
+    grid-column: 1 / 5;
+    grid-row: span 3;
+  }
+
+  .services-puzzle .service-card-5 {
+    grid-column: 5 / 9;
+    grid-row: span 3;
+  }
+
+  .services-puzzle .service-card-6 {
+    grid-column: 9 / 13;
+    grid-row: span 3;
+  }
+
+  .services-puzzle .service-card-7 {
+    grid-column: 1 / 4;
+    grid-row: span 3;
+  }
+
+  .services-puzzle .service-card-8 {
+    grid-column: 4 / 8;
+    grid-row: span 3;
+  }
+
+  .services-puzzle .service-card-9 {
+    grid-column: 8 / 13;
+    grid-row: span 3;
+  }
+}
+
+.services-puzzle .card.card-media {
+  position: relative;
+  margin-bottom: 0;
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: #0f172a;
+  cursor: pointer;
   transition:
     transform 220ms cubic-bezier(0.2, 0.8, 0.2, 1),
     box-shadow 220ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.card.card-media:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.18);
+.services-puzzle .card.card-media:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.22);
 }
 
-.card-media-img {
+.services-puzzle .card-media-img {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  max-width: 300px;
-  aspect-ratio: 4 / 3;
-  overflow: hidden;
-  border-radius: 10px;
+  max-width: none;
+  height: 100%;
+  aspect-ratio: auto;
+  border-radius: 0;
 }
 
-.card-media-img img {
+.services-puzzle .card-media-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 320ms cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 360ms cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
-.card.card-media:hover .card-media-img img {
-  transform: scale(1.08);
+.services-puzzle .card.card-media:hover .card-media-img img {
+  transform: scale(1.07);
 }
 
-.card-media-text {
+.services-puzzle .card-media-text {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
   min-width: 0;
+  padding: 0.9rem;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.78),
+    rgba(0, 0, 0, 0.38),
+    transparent
+  );
 }
 
-.card-media-text h3 {
-  margin: 0 0 6px;
-}
-
-.card-media-text .small {
+.services-puzzle .card-media-text h3 {
   margin: 0;
-  opacity: 0.85;
+  color: #ffffff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+}
+
+.services-puzzle .card-media-text .small {
+  margin-top: 0.6rem;
+  color: #ffffff;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(16px);
+  transition:
+    opacity 650ms cubic-bezier(0.19, 1, 0.22, 1),
+    transform 650ms cubic-bezier(0.19, 1, 0.22, 1),
+    max-height 650ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.services-puzzle .card.card-media:hover .card-media-text .small {
+  opacity: 0.96;
+  max-height: 240px;
+  transform: translateY(0);
+}
+
+.services-puzzle .service-img-6 img {
+  object-position: center 62%;
+}
+
+.service-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(4px);
+}
+
+.service-modal {
+  position: relative;
+  width: min(1100px, 96vw);
+  height: min(88vh, 860px);
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: #000;
+}
+
+.service-modal-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-modal-content {
+  position: absolute;
+  inset: auto 0 0 0;
+  z-index: 2;
+  padding: 1.2rem 1.2rem 1.4rem;
+  color: #fff;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.35), transparent);
+}
+
+.service-modal-content h3 {
+  margin: 0 0 0.6rem;
+}
+
+.service-modal-content p {
+  margin: 0;
+  color: #fff;
+  line-height: 1.6;
+}
+
+.service-modal-close {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  z-index: 3;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 999px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  cursor: pointer;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.service-modal-close:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+@media (max-width: 900px) {
+  .services-puzzle {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .services-puzzle .card.card-media,
+  .services-puzzle .service-card-1,
+  .services-puzzle .service-card-2,
+  .services-puzzle .service-card-3,
+  .services-puzzle .service-card-4,
+  .services-puzzle .service-card-5,
+  .services-puzzle .service-card-6,
+  .services-puzzle .service-card-7,
+  .services-puzzle .service-card-8,
+  .services-puzzle .service-card-9 {
+    position: static;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    grid-column: auto;
+    grid-row: auto;
+    min-height: auto;
+    padding: 12px;
+    background: var(--surface);
+  }
+
+  .services-puzzle .card-media-img {
+    position: static;
+    inset: auto;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 10px;
+  }
+
+  .services-puzzle .card-media-img img {
+    position: static;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .services-puzzle .card-media-text {
+    position: static;
+    inset: auto;
+    padding: 0;
+    background: none;
+  }
+
+  .services-puzzle .card-media-text h3 {
+    color: var(--text);
+    text-shadow: none;
+  }
+
+  .services-puzzle .card-media-text .small {
+    color: var(--primary-dark);
+    opacity: 0.96;
+    max-height: none;
+    overflow: visible;
+    transform: translateY(0);
+  }
+
+  .service-modal-backdrop {
+    display: none;
+  }
 }

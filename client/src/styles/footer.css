@@ -2,7 +2,7 @@
   border-top: 1px solid var(--border);
   margin-top: 4rem;
   padding: 2rem 0;
-  font-size: 0.9rem;
+  font-size: 16px;
   color: var(--muted);
 }
 
@@ -42,4 +42,38 @@
   .footer-copy {
     margin-top: 0.5rem;
   }
+}
+
+.footer {
+  position: relative;
+  padding: 2rem 1rem;
+  color: var(--muted);
+}
+
+/* textul principal */
+.footer-copy {
+  text-align: center;
+  font-size: 16px;
+}
+
+/* colt dreapta jos */
+.footer-powered {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  font-size: 20px;
+  opacity: 0.9;
+  font-family: "Allura", cursive;
+ font-weight: 400;
+ padding-top: 20px;
+ margin-top: 50px;
+}
+
+/* font rotund pentru ONRa */
+.onra {
+  font-family: "Allura", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 20px;
+  margin-left: 4px;
 }

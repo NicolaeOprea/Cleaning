@@ -1,6 +1,6 @@
 .mobile-panel {
   border-top: 1px solid var(--border);
-  background: #fff;
+  background: var(--surface);
 
   overflow: hidden;
   max-height: 0;
@@ -41,8 +41,9 @@
 }
 
 .mobile-panel .mobile-links a:not(.btn):hover {
-  background: rgba(0, 0, 0, 0.04);
-  transform: translateX(-1px);
+  background: var(--primary);
+  color: #fff !important;
+  transform: translateY(-1px);
 }
 
 /* hint */

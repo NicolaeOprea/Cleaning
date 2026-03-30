@@ -1,12 +1,13 @@
 :root {
-  --primary: #0ea5e9;
-  --primary-dark: #0284c7;
+  --primary: #8bcf6a;
+  --primary-dark: #4f8a32;
 
-  --bg: #ffffff;
+  --bg: #e8d5c1;
+  --surface: #fffaf4;
   --text: #0f172a;
   --muted: #64748b;
 
-  --border: #e2e8f0;
+  --border: #d6c2aa;
 
   /* header heights (folosite la UberUns / About) */
   --header-h-mobile: 56px;

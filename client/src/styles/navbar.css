@@ -1,0 +1,224 @@
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+
+  background: rgba(241, 224, 203, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 56px;
+  gap: 0.75rem;
+}
+
+/* Brand */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brand-logo {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  flex: 0 0 auto;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.05;
+  min-width: 0;
+}
+
+.brand-name {
+  font-weight: 800;
+  font-size: 0.98rem;
+}
+
+.brand-sub {
+  font-size: 0.72rem;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Mail (header) */
+.header-socials {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #1e293b;
+  color: white;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* hover */
+.header-socials a:hover {
+  transform: translateY(-2px);
+}
+
+/* culori individuale */
+.header-socials a:nth-child(1):hover {
+  background: #25D366; /* WhatsApp */
+}
+
+.header-socials a:nth-child(2):hover {
+  background: #1877F2; /* Facebook */
+}
+
+.header-socials a:nth-child(3):hover {
+  background: #0A66C2; /* LinkedIn */
+}
+
+.header-socials a:nth-child(4):hover {
+  background: #000; /* X */
+}
+/* pulse ring */
+@keyframes whatsappPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+/* aplicat pe primul icon (WhatsApp) */
+.header-socials a.whatsapp {
+  background: #25D366;
+  color: white;
+  animation: whatsappPulse 2s infinite;
+}
+
+/* hover = oprește pulse + mic lift */
+.header-socials a.whatsapp:hover {
+  animation: none;
+  transform: translateY(-2px) scale(1.05);
+}
+
+@media (max-width: 600px) {
+  .mail-text {
+    display: none;
+  }
+}
+
+/* Mobile actions */
+.header-actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: #fff;
+
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.icon-btn:active {
+  transform: scale(0.98);
+}
+
+/* Desktop nav (hidden mobile) */
+.desktop-nav {
+  display: none;
+}
+
+.desktop-nav a:not(.btn) {
+  padding: 0.55rem 0.8rem;
+  border-radius: 10px;
+  transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.desktop-nav a:not(.btn):hover {
+  background: var(--primary);
+  color: #fff !important;
+  transform: translateY(-1px);
+}
+
+@media (min-width: 900px) {
+  .header-row {
+    height: var(--header-h-desktop);
+  }
+
+  .header-actions {
+    display: none;
+  }
+
+  .desktop-nav {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+  }
+
+  .brand-logo {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+/* default (desktop) */
+.header-socials a {
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+}
+
+/* tablet */
+@media (max-width: 768px) {
+  .header-socials a {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+}
+
+/* mobil mic */
+@media (max-width: 480px) {
+  .header-socials {
+    gap: 8px;
+  }
+
+  .header-socials a {
+    width: 28px;
+    height: 28px;
+    font-size: 13px;
+  }
+}
+@media (max-width: 480px) {
+  .header-socials a:nth-child(3),
+  .header-socials a:nth-child(4) {
+    display: none;
+  }
+}

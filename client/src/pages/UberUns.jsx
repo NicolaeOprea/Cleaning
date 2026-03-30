@@ -1,52 +1,55 @@
-import firmaImg from "../assets/start/clean-team.jpg";
-import logoImg from "../assets/start/hosseini.jpeg";
+import firmaImg from "../assets/team.webp";
 
 export default function UeberUns() {
   return (
-    <main>
-      {/* HERO (firma + logo pe desktop, doar firma pe mobil) */}
-      <section className="about-hero">
-        <div
-          className="about-img about-img-left"
-          style={{ backgroundImage: `url(${firmaImg})` }}
-        />
-        <div
-          className="about-img about-img-right"
-          style={{ backgroundImage: `url(${logoImg})` }}
-        />
-      </section>
-
-      {/* CONTENT */}
-      <section className="section">
-        <div className="container about-content">
-          <h1>Über Hosseini Reinigung</h1>
-
-          <p className="lead">
-            Wir sind ein zuverlässiger Reinigungs- und Hausmeisterservice aus
-            München mit Fokus auf Qualität, Diskretion und persönliche
-            Betreuung.
-          </p>
-
-          <p>
-            Besonders im Bereich Praxis- und Büroreinigung arbeiten wir
-            strukturiert, sorgfältig und mit festen Abläufen.
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Odio,
-            veniam quidem sunt esse ratione iusto unde quisquam ipsa similique
-            illum adipisci mollitia alias voluptate asperiores nemo, enim est ad
-            sed!
-          </p>
-          <p>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim ipsam
-            perferendis nihil nostrum esse ducimus fuga illo excepturi! Modi id
-            officiis pariatur fugiat alias repellendus fugit numquam earum,
-            incidunt beatae obcaecati, eum soluta autem debitis est. Neque sit
-            ratione, ex magni at id sed autem velit corporis totam molestiae ut.
-          </p>
+    <main className="section about-page">
+      <section className="container about-layout">
+        <div className="about-hero">
+          <div
+            className="about-img about-img-left"
+            style={{ backgroundImage: `url(${firmaImg})` }}
+          />
         </div>
-      </section>
 
+        <div className="about-content">
+  <h1>Über Hosseini Reinigung</h1>
+
+  <p className="lead">
+    Hosseini Reinigung ist ein professioneller Reinigungsservice aus München,
+    spezialisiert auf Gebäudereinigung, Büroreinigung und Praxisreinigung.
+    Unser Ziel ist es, Unternehmen und privaten Kunden eine zuverlässige,
+    gründliche und flexible Reinigungslösung anzubieten.
+  </p>
+
+  <p>
+    Als erfahrene Gebäudereinigung in München betreuen wir Büros, Arztpraxen,
+    Treppenhäuser sowie private Haushalte. Saubere und gepflegte Räume sind
+    entscheidend für das Wohlbefinden von Mitarbeitern, Kunden und Besuchern.
+    Deshalb arbeiten wir mit klaren Abläufen, modernen Reinigungsmethoden
+    und einem hohen Qualitätsanspruch.
+  </p>
+
+  <p>
+    Besonders im Bereich Büroreinigung und Praxisreinigung legen wir großen
+    Wert auf Hygiene, Diskretion und Zuverlässigkeit. Unsere Mitarbeiter
+    arbeiten sorgfältig, pünktlich und mit einem geschulten Blick für Details,
+    damit Ihre Räume jederzeit einen professionellen Eindruck hinterlassen.
+  </p>
+
+  <p>
+    Neben der klassischen Gebäudereinigung bieten wir auch Hausmeisterservice
+    und regelmäßige Unterhaltsreinigung in München und Umgebung an. Gemeinsam
+    mit unseren Kunden entwickeln wir individuelle Reinigungskonzepte,
+    die genau auf das jeweilige Objekt abgestimmt sind.
+  </p>
+
+  <p>
+    Hosseini Reinigung steht für Qualität, Vertrauen und langfristige
+    Zusammenarbeit – Ihr zuverlässiger Partner für professionelle
+    Reinigungsservices in München.
+  </p>
+</div>
+      </section>
     </main>
   );
 }

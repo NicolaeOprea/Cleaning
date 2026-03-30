@@ -18,6 +18,8 @@
 /* GRID HELPERS */
 .grid {
   width: 100%;
+  display: grid;
+  gap: 1rem;
 }
 
 .grid-3 {

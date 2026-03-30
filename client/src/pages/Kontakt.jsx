@@ -1,5 +1,7 @@
 import { useState } from "react";
-const API = process.env.REACT_APP_API_BASE || "";
+import kontaktImg from "../assets/kontakt.webp";
+
+
 
 export default function Kontakt() {
   const [form, setForm] = useState({
@@ -29,13 +31,19 @@ export default function Kontakt() {
 
     try {
       setLoading(true);
-      const res = await fetch(`${API}/api/contact`, {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
 
-      const data = await res.json();
+      const raw = await res.text();
+      let data = {};
+      try {
+        data = JSON.parse(raw);
+      } catch {
+        data = { message: raw };
+      }
 
       if (!res.ok) {
         setStatus({
@@ -61,103 +69,122 @@ export default function Kontakt() {
   };
 
   return (
-    <main className="container section">
-      <h1>Kontakt</h1>
-      <p className="small">
-        Angebot für München + Umland (Umkreis ~40 km). Fokus: Büro- und
-        Praxisreinigung.
-      </p>
-
-      <div
-        className="grid grid-2"
-        style={{ marginTop: "1.5rem", alignItems: "start" }}
-      >
-        <div className="card">
-          <h3>Kontaktinformationen</h3>
-          <p className="small">
-            Telefon: <a href="tel:+4917600000000">+49 176 00000000</a>
-            <br />
-            Email:{" "}
-            <a href="mailto:kontakt@hosseinireinigugsservice.de">
-              Kontakt@hosseinireinigugsservice.de
-            </a>
-          </p>
-          <div className="alert">
-            <b>Hinweis:</b> Winterdienst ist aktuell auf Anfrage / in
-            Vorbereitung.
+    <main className="section kontakt-page">
+      <section className="container kontakt-layout">
+        <div className="kontakt-hero">
+          <div className="kontakt-hero-bg">
+            <img src={kontaktImg} alt="Kontakt" className="kontakt-hero-img" />
+            <div className="kontakt-hero-overlay">
+              
+            </div>
           </div>
         </div>
 
-        <div className="card">
-          <h3>Kontaktformular</h3>
+        <div className="kontakt-content">
+          <p className="small">
+            Zuverlässige Reinigung für München und Umland (ca. 40 km) – mit
+            Fokus auf Büro-, Praxis- und Treppenhausreinigung.
+          </p>
+          <h1>Ihr Reinigungsservice in München – schnell & zuverlässig</h1>
+          <div
+            className="grid grid-2"
+            style={{ marginTop: "1.5rem", alignItems: "start" }}
+          >
+            <div className="card">
+              <h3>Kontaktinformationen</h3>
 
-          {status.msg && (
-            <div className="alert" style={{ marginBottom: "1rem" }}>
-              {status.msg}
+              <p className="small">
+                Telefon: <a href="tel:01633806921">01633806921</a>
+                <br />
+                Email:{" "}
+                <a href="mailto:kontakt@hosseinireinigungsservice.de">
+                  Kontakt@hosseinireinigungsservice.de
+                </a>
+              </p>
+              <p className="small">
+                Sie erreichen uns schnell und unkompliziert per Telefon oder
+                E-Mail. Gerne erstellen wir Ihnen ein individuelles Angebot für
+                Ihre Reinigungsanfrage.
+              </p>
+              <div className="alert">
+                <b>Hinweis:</b> Winterdienst ist aktuell auf Anfrage / in
+                Vorbereitung.
+              </div>
             </div>
-          )}
 
-          <form onSubmit={onSubmit}>
-            <label className="label">Name*</label>
-            <input
-              className="input"
-              name="name"
-              value={form.name}
-              onChange={onChange}
-            />
+            <div className="card">
+              <h3>Jetzt Anfrage senden</h3>
 
-            <div style={{ height: 12 }} />
+              {status.msg && (
+                <div className="alert" style={{ marginBottom: "1rem" }}>
+                  {status.msg}
+                </div>
+              )}
 
-            <label className="label">Email*</label>
-            <input
-              className="input"
-              name="email"
-              value={form.email}
-              onChange={onChange}
-            />
+              <form onSubmit={onSubmit}>
+                <label className="label">Name*</label>
+                <input
+                  className="input"
+                  name="name"
+                  value={form.name}
+                  onChange={onChange}
+                />
 
-            <div style={{ height: 12 }} />
+                <div style={{ height: 12 }} />
 
-            <label className="label">Telefon</label>
-            <input
-              className="input"
-              name="phone"
-              value={form.phone}
-              onChange={onChange}
-            />
+                <label className="label">Email*</label>
+                <input
+                  className="input"
+                  name="email"
+                  value={form.email}
+                  onChange={onChange}
+                />
 
-            <div style={{ height: 12 }} />
+                <div style={{ height: 12 }} />
 
-            <label className="label">Nachricht*</label>
-            <textarea
-              className="textarea"
-              name="message"
-              value={form.message}
-              onChange={onChange}
-            />
+                <label className="label">Telefon</label>
+                <input
+                  className="input"
+                  name="phone"
+                  value={form.phone}
+                  onChange={onChange}
+                />
 
-            <div style={{ height: 12 }} />
+                <div style={{ height: 12 }} />
 
-            <button className="btn" disabled={loading}>
-              {loading ? "Senden..." : "Anfrage senden"}
-            </button>
-            <input
-              type="text"
-              name="company"
-              value={form.company}
-              onChange={onChange}
-              autoComplete="off"
-              tabIndex={-1}
-              aria-hidden="true"
-              style={{ display: "none" }}
-            />
-            <p className="small" style={{ marginTop: "0.75rem" }}>
-              Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten gemäß
-              Datenschutz zu.
-            </p>
-          </form>
+                <label className="label">Nachricht*</label>
+                <textarea
+                  className="textarea"
+                  name="message"
+                  value={form.message}
+                  onChange={onChange}
+                />
+
+                <div style={{ height: 12 }} />
+
+                <button className="btn" disabled={loading}>
+            {loading ? "Wird gesendet..." : "Unverbindlich anfragen"}
+          </button>
+                <input
+                  type="text"
+                  name="company"
+                  value={form.company}
+                  onChange={onChange}
+                  autoComplete="off"
+                  tabIndex={-1}
+                  aria-hidden="true"
+                  style={{ display: "none" }}
+                />
+                <p className="small" style={{ marginTop: "0.75rem" }}>
+                  Mit dem Absenden stimmen Sie der Verarbeitung Ihrer Daten
+                  gemäß Datenschutz zu.
+                </p>
+              </form>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+     
     </main>
   );
 }

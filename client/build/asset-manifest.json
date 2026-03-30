@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.54f1fa4b.css",
+    "main.js": "/static/js/main.1986b079.js",
+    "static/media/garten.webp": "/static/media/garten.13d32bab56e74bf79b7b.webp",
+    "static/media/fenster.webp": "/static/media/fenster.76589b3bcdc285552692.webp",
+    "static/media/party.webp": "/static/media/party.edd778fe25d29c70d5ec.webp",
+    "static/media/gebeude.webp": "/static/media/gebeude.596a0e64dd6c5c34429b.webp",
+    "static/media/winter.webp": "/static/media/winter.a48d388621eb91535b54.webp",
+    "static/media/team.webp": "/static/media/team.448771aa16746383582e.webp",
+    "static/media/buro.webp": "/static/media/buro.4e871ffad33228ed1d0f.webp",
+    "static/media/hausmeister.webp": "/static/media/hausmeister.2b5841276b32c356499a.webp",
+    "static/media/treppen.webp": "/static/media/treppen.fbfce34aa1930e5a63ff.webp",
+    "static/media/praxis.webp": "/static/media/praxis.7314af4fd626f5a87118.webp",
+    "static/media/kontakt.webp": "/static/media/kontakt.e3ad4297804e1512924e.webp",
+    "static/media/logo2.webp": "/static/media/logo2.5c32ee87f5b381acdc23.webp",
+    "index.html": "/index.html",
+    "main.54f1fa4b.css.map": "/static/css/main.54f1fa4b.css.map",
+    "main.1986b079.js.map": "/static/js/main.1986b079.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.54f1fa4b.css",
+    "static/js/main.1986b079.js"
+  ]
+}

@@ -1,13 +1,2 @@
-# env & secrets
-.env
-.env.*
-
-# logs
-*.log
-
-# node
-node_modules/
-
-# builds
-dist/
-build/
+.env 
+/node_modules
