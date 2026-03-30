@@ -7,60 +7,73 @@ export default function Datenschutz() {
 
       <div className="datenschutz-card">
         <p className="datenschutz-text">
-          1. Datenschutz auf einen Blick Allgemeine Hinweise Die folgenden
-          Hinweise geben einen einfachen Ãœberblick darÃ¼ber, was mit Ihren
-          personenbezogenen Daten passiert, wenn Sie diese Website besuchen.
-          Personenbezogene Daten sind alle Daten, mit denen Sie persÃ¶nlich
-          identifiziert werden kÃ¶nnen. Datenerfassung auf dieser Website Wer ist
-          verantwortlich fÃ¼r die Datenerfassung auf dieser Website? Die
-          Datenverarbeitung auf dieser Website erfolgt durch den
-          Websitebetreiber: Hosseini Reinigungsservice Inhaber: [Dein Vorname]
-          Hosseini E-Mail: Kontakt@hosseinireinigungsservice.de
+          1. Datenschutz auf einen Blick
+
+          Allgemeine Hinweise
+
+          Die folgenden Hinweise geben einen einfachen Ueberblick darueber, was
+          mit Ihren personenbezogenen Daten passiert, wenn Sie diese Website
+          besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie
+          persoenlich identifiziert werden koennen.
+
+          Wer ist verantwortlich fuer die Datenerfassung auf dieser Website?
+
+          Die Datenverarbeitung auf dieser Website erfolgt durch den
+          Websitebetreiber:
+          Hosseini Reinigungsservice
+          Inhaber: [Dein Vorname] Hosseini
+          E-Mail: kontakt@hosseinireinigungsservice.de
         </p>
 
         <p className="datenschutz-text">
-          2. Datenerfassung durch das Kontaktformular Wenn Sie uns per
-          Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem
-          Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten
-          zwecks Bearbeitung der Anfrage und fÃ¼r den Fall von Anschlussfragen
-          bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre
-          Einwilligung weiter. Die Verarbeitung dieser Daten erfolgt auf
-          Grundlage von Art. 6 Abs. 1 lit. b DSGVO, sofern Ihre Anfrage mit der
-          ErfÃ¼llung eines Vertrags zusammenhÃ¤ngt oder zur DurchfÃ¼hrung
-          vorvertraglicher MaÃŸnahmen erforderlich ist. In allen Ã¼brigen FÃ¤llen
-          beruht die Verarbeitung auf unserem berechtigten Interesse an der
-          effektiven Bearbeitung der an uns gerichteten Anfragen (Art. 6 Abs. 1
-          lit. f DSGVO).
+          2. Datenerfassung durch das Kontaktformular
+
+          Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre
+          Angaben aus dem Anfrageformular inklusive der von Ihnen dort
+          angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und fuer den
+          Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir
+          nicht ohne Ihre Einwilligung weiter.
+
+          Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1
+          lit. b DSGVO, sofern Ihre Anfrage mit der Erfuellung eines Vertrags
+          zusammenhaengt oder zur Durchfuehrung vorvertraglicher Massnahmen
+          erforderlich ist. In allen uebrigen Faellen beruht die Verarbeitung
+          auf unserem berechtigten Interesse an der effektiven Bearbeitung der
+          an uns gerichteten Anfragen (Art. 6 Abs. 1 lit. f DSGVO).
         </p>
 
         <p className="datenschutz-text">
-          3. Ihre Rechte Sie haben jederzeit das Recht, unentgeltlich Auskunft
-          Ã¼ber Herkunft, EmpfÃ¤nger und Zweck Ihrer gespeicherten
-          personenbezogenen Daten zu erhalten. Sie haben auÃŸerdem ein Recht, die
-          Berichtigung oder LÃ¶schung dieser Daten zu verlangen. Hierzu sowie zu
-          weiteren Fragen zum Thema Datenschutz kÃ¶nnen Sie sich jederzeit unter
-          der im Impressum angegebenen Adresse an uns wenden. Ein paar wichtige
-          Hinweise fÃ¼r dich: â€¢ Erreichbarkeit: Das Impressum muss von jeder
-          Unterseite deiner Webseite mit einem Klick erreichbar sein (meistens
-          packt man den Link ganz nach unten in den â€žFooterâ€œ). â€¢ Steuernummer:
-          Wenn du die Kleinunternehmerregelung nutzt, reicht oft die normale
-          Steuernummer, falls du noch keine USt-IdNr. hast. â€¢
-          Berufsgenossenschaft: Da du im Reinigungsservice tÃ¤tig bist, ist es
-          oft gut, die zustÃ¤ndige Berufsgenossenschaft (BG Bau) im Hinterkopf zu
-          behalten, auch wenn sie nicht zwingend ins Impressum muss.
+          3. Ihre Rechte
+
+          Sie haben jederzeit das Recht, unentgeltlich Auskunft ueber Herkunft,
+          Empfaenger und Zweck Ihrer gespeicherten personenbezogenen Daten zu
+          erhalten. Sie haben ausserdem ein Recht, die Berichtigung oder
+          Loeschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen
+          zum Thema Datenschutz koennen Sie sich jederzeit unter der im
+          Impressum angegebenen Adresse an uns wenden.
+
+          Ein paar wichtige Hinweise:
+          - Erreichbarkeit: Das Impressum muss von jeder Unterseite Ihrer
+          Webseite mit einem Klick erreichbar sein, meist im Footer.
+          - Steuernummer: Wenn Sie die Kleinunternehmerregelung nutzen, reicht
+          oft die normale Steuernummer, falls Sie noch keine USt-IdNr. haben.
+          - Berufsgenossenschaft: Im Reinigungsservice ist die zustaendige
+          Berufsgenossenschaft oft BG Bau, auch wenn sie nicht zwingend im
+          Impressum genannt werden muss.
         </p>
 
         <h3 className="datenschutz-subtitle">Ihre Rechte</h3>
+
         <p className="datenschutz-text">
-          Sie haben das Recht auf Auskunft, Berichtigung, LÃ¶schung,
-          EinschrÃ¤nkung der Verarbeitung sowie Widerspruch. AuÃŸerdem besteht ein
-          Beschwerderecht bei einer AufsichtsbehÃ¶rde.
+          Sie haben das Recht auf Auskunft, Berichtigung, Loeschung,
+          Einschraenkung der Verarbeitung sowie Widerspruch. Ausserdem besteht
+          ein Beschwerderecht bei einer Aufsichtsbehoerde.
         </p>
 
         <p className="datenschutz-note">
-          Hinweis: Dies ist eine allgemeine Vorlage. Vor Live-Schaltung sollte
-          sie an die tatsÃ¤chlichen Tools (Analytics, Cookies, Hosting,
-          Newsletter usw.) angepasst werden.
+          Hinweis: Dies ist eine allgemeine Vorlage. Vor der
+          Live-Schaltung sollte sie an die tatsaechlich verwendeten Tools
+          wie Analytics, Cookies, Hosting oder Newsletter angepasst werden.
         </p>
       </div>
     </main>

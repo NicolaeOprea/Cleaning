@@ -1,10 +1,11 @@
 .datenschutz-page {
-  padding-top: calc(var(--header-h-desktop) + 1.5rem);
+
   padding-bottom: 3.5rem;
 }
 
 .datenschutz-title {
   margin: 0 0 1.25rem 20px;
+  padding-top: 0.5rem;
 }
 
 .datenschutz-card {
@@ -35,11 +36,12 @@
 
 @media (max-width: 640px) {
   .datenschutz-page {
-    padding-top: calc(var(--header-h-mobile) + 1.25rem);
+    padding-top: calc(var(--header-h-mobile) + 3.75rem);
   }
 
   .datenschutz-title {
     margin-left: 12px;
+    padding-top: 0.75rem;
   }
 
   .datenschutz-card {

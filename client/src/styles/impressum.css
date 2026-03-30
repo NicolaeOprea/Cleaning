@@ -1,5 +1,5 @@
 .impressum-page {
-  padding-top: calc(var(--header-h-desktop) + 1.5rem);
+  padding-top: calc(var(--header-h-desktop) + 3rem);
   padding-bottom: 3.5rem;
 }
 
@@ -36,7 +36,7 @@
 
 @media (max-width: 640px) {
   .impressum-page {
-    padding-top: calc(var(--header-h-mobile) + 1.25rem);
+    padding-top: calc(var(--header-h-mobile) + 4.75rem);
   }
 
   .impressum-title {
