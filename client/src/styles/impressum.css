@@ -1,0 +1,50 @@
+.impressum-page {
+  padding-top: calc(var(--header-h-desktop) + 1.5rem);
+  padding-bottom: 3.5rem;
+}
+
+.impressum-title {
+  margin: 0 0 1.25rem 20px;
+}
+
+.impressum-card {
+  margin: 0 20px;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--bg);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+}
+
+.impressum-company {
+  margin: 0 0 1rem;
+  color: var(--text);
+}
+
+.impressum-text,
+.impressum-note {
+  margin: 1rem 0 0;
+  color: var(--primary-dark);
+  white-space: pre-line;
+}
+
+.impressum-note {
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+}
+
+@media (max-width: 640px) {
+  .impressum-page {
+    padding-top: calc(var(--header-h-mobile) + 1.25rem);
+  }
+
+  .impressum-title {
+    margin-left: 12px;
+  }
+
+  .impressum-card {
+    margin: 0 12px;
+    padding: 1rem;
+  }
+}
